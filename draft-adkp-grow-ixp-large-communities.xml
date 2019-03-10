@@ -145,6 +145,11 @@
                     <ttcol align="center">Strip on export</ttcol>
                     <ttcol align="center">Priority</ttcol>
                     <c>RS:101:PEERAS</c><c>Prepend to PEERAS once</c><c></c><c>yes</c><c>3</c>
+		    <c>RS:102:PEERAS</c><c>Prepend to PEERAS twice</c><c></c><c>yes</c><c>3</c>
+		    <c>RS:103:PEERAS</c><c>Prepend to PEERAS three times</c><c></c><c>yes</c><c>3</c>
+		    <c>RS:111:ms</c><c>Prepend once to peers higher than ms</c><c></c><c>yes</c><c>3</c>
+                    <c>RS:112:ms</c><c>Prepend twice to peers higher than ms</c><c></c><c>yes</c><c>3</c>
+                    <c>RS:113:ms</c><c>Prepend three to peers higher than ms</c><c></c><c>yes</c><c>3</c>
                     <postamble>First published EURO-IX website <xref target="EURO-IX"/></postamble>
                 </texttable>
 
