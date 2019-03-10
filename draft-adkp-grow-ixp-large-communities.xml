@@ -115,14 +115,14 @@
     <middle>
         <section title="Introduction">
             <t>
-                This document presents suggestions for the use of BPG Large Communities <xref target="RFC8092" /> for IXP operators and mbmers using the BGP-4 <xref target="RFC4271" /> protocol.
+                This document presents suggestions for the use of BPG Large Communities <xref target="RFC8092" /> for IXP operators and members using the BGP-4 <xref target="RFC4271" /> protocol.
 		It adds specific suggestions for the operators and members of IXPs deploying BGP Large Communities as suggested in <xref target="RFC8195" />.
             </t>
         </section>
 
         <section title="Suggested Large BGP Community Standard List">
             <t>
-		This list proposes a standard to use in IXP operations for the use of BGP Large Communities.
+		This list proposes a standard to use in IXP operations for the use of BGP Large Communities. It was first published at the EURO-IX website <xref target="EURO-IX" />.
             </t>
             <t>
                 The tables below provide a per 'section' divided overview of Large Community usage.
@@ -136,7 +136,6 @@
                     <c>RS:0:PEERAS</c><c>Do not advertise to PEERAS</c><c></c><c>recommended</c><c>0</c>
 		    <c>RS:1:PEERAS</c><c>Advertise to PEERAS</c><c>Only useful in combination with RS:0:0</c><c>recommended</c><c>1</c>
 		    <c>RS:2:ms</c><c>Do not announce to peers higher than ms</c><c>ms = Latency of peer in ms</c><c>recommended</c><c>2</c>
-                    <postamble>First published EURO-IX website <xref target="EURO-IX"/></postamble>
                 </texttable>
                 <texttable anchor="table_prepend" title="AS Path prepending RS:100-199:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
@@ -150,7 +149,14 @@
 		    <c>RS:111:ms</c><c>Prepend once to peers higher than ms</c><c></c><c>yes</c><c>3</c>
                     <c>RS:112:ms</c><c>Prepend twice to peers higher than ms</c><c></c><c>yes</c><c>3</c>
                     <c>RS:113:ms</c><c>Prepend three to peers higher than ms</c><c></c><c>yes</c><c>3</c>
-                    <postamble>First published EURO-IX website <xref target="EURO-IX"/></postamble>
+                </texttable>
+                <texttable anchor="table_unassigned" title="Unassigned RS:200-899:*" style="all">
+                    <ttcol align="center" width="20%">Range</ttcol>
+                    <ttcol align="center">Description</ttcol>
+                    <ttcol align="center">Notes</ttcol>
+                    <ttcol align="center">Strip on export</ttcol>
+                    <ttcol align="center">Priority</ttcol>
+                    <c></c><c></c><c></c><c></c><c></c>
                 </texttable>
 
             </section>
