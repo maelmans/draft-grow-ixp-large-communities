@@ -1,5 +1,12 @@
-IXP Route Server BGP Community usage Draft IETF Draft Repository
-=================================================
+IXP Route Server BGP Community usage Draft IETF Draft
+=====================================================
+
+Abstract
+--------
+
+This document presents suggestions for the use of BPG Large Communities at Internet Exchange Points (IXPs) based on operational experiences from IXP members this document suggests catergories of communities.  
+Any IXP operator or IXP member can consider using these communities.  
+The document specifically focusses on Route Server [RFC7947] deployments in IXP context [RFC7948].
 
 Authoring Conventions
 ---------------------
@@ -9,7 +16,7 @@ Authoring Conventions
 * Be sure to keep track of the names of contributors through the Acknowledgements section and the git log.
 
 Note Well
-------
+---------
 
 This repository relates to activities in the Internet Engineering Task Force
 (IETF). All material in this repository is considered Contributions to the IETF
