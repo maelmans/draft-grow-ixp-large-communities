@@ -1,5 +1,5 @@
-IXP Route Server BGP Community usage Draft IETF Draft Repository
-================================================================
+IXP Route Server BGP Community usage Draft IETF Draft
+=====================================================
 
 Abstract
 --------
