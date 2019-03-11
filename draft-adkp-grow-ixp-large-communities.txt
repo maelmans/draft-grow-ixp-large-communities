@@ -6,11 +6,11 @@ Global Routing Operations                                     M. Aelmans
 Internet-Draft                                          Juniper Networks
 Updates: 7947,7948 (if approved)                         S. Konstantaras
 Intended status: Informational                                    AMS-IX
-Expires: September 11, 2019                                      S. Plug
+Expires: September 13, 2019                                      S. Plug
                                                          ECIX - Megaport
                                                               C. Dietzel
                                                                   DE-CIX
-                                                          March 10, 2019
+                                                          March 12, 2019
 
 
         BPG Large Communities applications for IXP Route Servers
@@ -18,12 +18,12 @@ Expires: September 11, 2019                                      S. Plug
 
 Abstract
 
-   This document presents suggestions for the use of BPG Large
-   Communities [RFC8092] at Internet Exchange Points (IXPs) based on
-   operational experiences from IXP members this document suggests
-   catergories of communities.  Any IXP operator or IXP member can
-   consider using these communities.  The document specifically focusses
-   on Route Server [RFC7947] deployments in IXP context [RFC7948].
+   This document presents suggestion and examples for application of BPG
+   Large Communities [RFC8092] at Internet Exchange Points (IXPs).
+   Suggestions are based on operational experiences from IXP operators
+   and members.  Any IXP operator or IXP member can consider using these
+   communities.  The document specifically focusses on Route Server
+   [RFC7947] deployments in IXP context [RFC7948].
 
 Requirements Language
 
@@ -48,12 +48,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 11, 2019.
+   This Internet-Draft will expire on September 13, 2019.
 
 
 
 
-Aelmans, et al.        Expires September 11, 2019               [Page 1]
+Aelmans, et al.        Expires September 13, 2019               [Page 1]
 
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
@@ -76,25 +76,45 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Suggested Large BGP Community Standard List . . . . . . . . .   2
-   3.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
-   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
-   5.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   9
-   6.  Appendix: Implementation Guidance . . . . . . . . . . . . . .   9
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .  10
+   2.  Justification . . . . . . . . . . . . . . . . . . . . . . . .   2
+   3.  Suggested Large BGP Community Standard List . . . . . . . . .   3
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
+   6.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   9
+   7.  Appendix: Implementation Guidance . . . . . . . . . . . . . .   9
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
 1.  Introduction
 
-   This document presents suggestions for the use of BPG Large
-   Communities [RFC8092] for IXP operators and members using the BGP-4
+   This document presents suggestions for the application of BPG Large
+   Communities [RFC8092] to IXP operators and members using the BGP
    [RFC4271] protocol.  It adds specific suggestions for the operators
    and members of IXPs deploying BGP Large Communities as suggested in
    [RFC8195].
 
-2.  Suggested Large BGP Community Standard List
+2.  Justification
+
+   Networks operating in the DFZ tend to exchange routing information at
+   multiple IXP in order to improve redundancy and geographical
+   optimization.  Besides 'the typical' IXP members an increasing amount
+   of enterprise networks connect to IXPs.  They have additional
+   requirements.  In order to offer a uniform mode of operation across
+   different IXPs there is a need to provide standards.
+
+
+
+
+
+
+Aelmans, et al.        Expires September 13, 2019               [Page 2]
+
+Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
+
+
+3.  Suggested Large BGP Community Standard List
 
    This list proposes a standard to use in IXP operations for the use of
    BGP Large Communities.  It was first published at the EURO-IX website
@@ -102,17 +122,6 @@ Table of Contents
 
    The tables below provide a per 'section' divided overview of Large
    Community usage.
-
-
-
-
-
-
-
-Aelmans, et al.        Expires September 11, 2019               [Page 2]
-
-Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
-
 
    +-------------+-------------+--------------+-------------+----------+
    |    Range    | Description |    Notes     |   Strip on  | Priority |
@@ -156,16 +165,7 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
 
-
-
-
-
-
-
-
-
-
-Aelmans, et al.        Expires September 11, 2019               [Page 3]
+Aelmans, et al.        Expires September 13, 2019               [Page 3]
 
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
@@ -221,7 +221,7 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
 
-Aelmans, et al.        Expires September 11, 2019               [Page 4]
+Aelmans, et al.        Expires September 13, 2019               [Page 4]
 
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
@@ -277,7 +277,7 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
 
-Aelmans, et al.        Expires September 11, 2019               [Page 5]
+Aelmans, et al.        Expires September 13, 2019               [Page 5]
 
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
@@ -333,7 +333,7 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
 
-Aelmans, et al.        Expires September 11, 2019               [Page 6]
+Aelmans, et al.        Expires September 13, 2019               [Page 6]
 
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
@@ -389,7 +389,7 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
 
-Aelmans, et al.        Expires September 11, 2019               [Page 7]
+Aelmans, et al.        Expires September 13, 2019               [Page 7]
 
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
@@ -436,35 +436,33 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
                    Table 9: IXP Specific RS:1900-1999:*
 
-3.  Security Considerations
+4.  Security Considerations
 
-   No Security considerations at this point.
-
-
-
-
+   Operators should note the recommendations in Section 11 of BGP
+   Operations and Security [RFC7454] and handle BGP Large Communities
+   with their ASN in the Global Administrator field similarly.
 
 
-Aelmans, et al.        Expires September 11, 2019               [Page 8]
+
+
+Aelmans, et al.        Expires September 13, 2019               [Page 8]
 
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
-4.  IANA Considerations
+5.  IANA Considerations
 
-5.  Acknowledgments
+6.  Acknowledgments
 
    The authors would like to thank Colby Barth (Juniper Networks) and
-   Bijal Sanghani (EURO-IX for their support, insightful review, and
+   Bijal Sanghani (EURO-IX) for their support, insightful review, and
    comments.
 
-6.  Appendix: Implementation Guidance
+7.  Appendix: Implementation Guidance
 
-   How should IXPs implement.
+8.  References
 
-7.  References
-
-7.1.  Normative References
+8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -475,6 +473,10 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
               Border Gateway Protocol 4 (BGP-4)", RFC 4271,
               DOI 10.17487/RFC4271, January 2006,
               <https://www.rfc-editor.org/info/rfc4271>.
+
+   [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
+              and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
+              February 2015, <https://www.rfc-editor.org/info/rfc7454>.
 
    [RFC7947]  Jasinska, E., Hilliard, N., Raszuk, R., and N. Bakker,
               "Internet Exchange BGP Route Server", RFC 7947,
@@ -499,14 +501,12 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
 
-
-
-Aelmans, et al.        Expires September 11, 2019               [Page 9]
+Aelmans, et al.        Expires September 13, 2019               [Page 9]
 
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
-7.2.  Informative References
+8.2.  Informative References
 
    [EURO-IX]  EURO-IX, "Large BGP Communities", April 2018,
               <https://www.euro-ix.net/en/forixps/
@@ -557,4 +557,4 @@ Authors' Addresses
 
 
 
-Aelmans, et al.        Expires September 11, 2019              [Page 10]
+Aelmans, et al.        Expires September 13, 2019              [Page 10]
