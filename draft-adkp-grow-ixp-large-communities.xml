@@ -28,8 +28,8 @@
 
     <front>
 
-        <title abbrev="BPG Large Communities at IXP Route Servers">
-		BPG Large Communities applications for IXP Route Servers
+        <title abbrev="BGP Large Communities at IXP Route Servers">
+		BGP Large Communities applications for IXP Route Servers
         </title>
 
         <author fullname="Melchior Aelmans" initials="M.D.F." surname="Aelmans">
@@ -102,7 +102,7 @@
 
         <abstract>
             <t>
-                This document presents suggestion and examples for application of BPG Large Communities <xref target="RFC8092" /> at Internet Exchange Points (IXPs). Suggestions are based on operational experiences from IXP operators and members.
+                This document presents suggestion and examples for application of BGP Large Communities <xref target="RFC8092" /> at Internet Exchange Points (IXPs). Suggestions are based on operational experiences from IXP operators and members.
 		Any IXP operator or IXP member can consider using these communities. The document specifically focusses on Route Server <xref target="RFC7947" /> deployments in IXP context <xref target="RFC7948" />.
             </t>
         </abstract>
@@ -115,7 +115,7 @@
     <middle>
         <section title="Introduction">
             <t>
-                This document presents suggestions for the application of BPG Large Communities <xref target="RFC8092" /> to IXP operators and members using the BGP <xref target="RFC4271" /> protocol.
+                This document presents suggestions for the application of BGP Large Communities <xref target="RFC8092" /> to IXP operators and members using the BGP <xref target="RFC4271" /> protocol.
 		It adds specific suggestions for the operators and members of IXPs deploying BGP Large Communities as suggested in <xref target="RFC8195" />.
             </t>
         </section>
