@@ -79,13 +79,13 @@ Table of Contents
    2.  Justification . . . . . . . . . . . . . . . . . . . . . . . .   2
    3.  Suggested Large BGP Community Standard List . . . . . . . . .   3
    4.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   9
-   6.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   9
-   7.  Appendix: Implementation Guidance . . . . . . . . . . . . . .   9
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  10
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
+   6.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   8
+   7.  Appendix: Implementation Guidance . . . . . . . . . . . . . .   8
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .   9
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
 
@@ -214,10 +214,10 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
                    Table 4: Informational RS:1000-1999:*
 
-   +----------------+--------------+---------------+--------+----------+
-   |     Range      | Description  |     Notes     | Strip  | Priority |
-   |                |              |               |   on   |          |
-   |                |              |               | export |          |
+   +-----------------+--------------------+-------------------+--------+
+   |      Range      |    Description     |       Notes       | Strip  |
+   |                 |                    |                   |   on   |
+   |                 |                    |                   | export |
 
 
 
@@ -226,54 +226,54 @@ Aelmans, et al.        Expires September 13, 2019               [Page 4]
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1000:1    |  RPKI VALID  |   Prefix is   |  yes   |          |
-   |                |              |   RPKI VALID  |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1000:2    | RPKI UNKNOWN |   Prefix is   |  yes   |          |
-   |                |              |  RPKI UNKNOWN |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1000:3    |   RPKI NOT   |               |  yes   |          |
-   |                |   CHECKED    |               |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |  RS:1000:4-*   |  Prefix is   |               |  yes   |          |
-   |                | RPKI INVALID |               |        |          |
-   |                |  because of  |               |        |          |
-   |                |   $REASON    |               |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1001:1    | IRRDB VALID  | Prefix exists |  yes   |          |
-   |                |              |    in IRRDB   |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1001:2    |  IRRDB NOT   |   Prefix was  |  yes   |          |
-   |                |   CHECKED    |  not checked  |        |          |
-   |                |              |    in IRRDB   |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1001:3    |     MORE     |  Prefix does  |  yes   |          |
-   |                |   SPECIFIC   |  not exist in |        |          |
-   |                |  THAN IRRDB  |  IRRDB, but a |        |          |
-   |                |              |      less     |        |          |
-   |                |              | specific does |        |          |
-   |                |              |  valid entry  |        |          |
-   |                |              |     exists    |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1001:4    | IRRDB Prefix |   Prefix was  |  yes   |          |
-   |                | not found in |  not found in |        |          |
-   |                |  AS-SET or   |   the peer's  |        |          |
-   |                |   aut-num    |     as-set    |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1001:5    |    IRRDB     | Origin AS not |  yes   |          |
-   |                |   INVALID    |  in peer AS-  |        |          |
-   |                |  ORIGIN AS   |      SET      |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1001:6    |    IRRDB     |   Prefix not  |  yes   |          |
-   |                |   INVALID    |    found in   |        |          |
-   |                |  PREFIX FOR  |   origin AS   |        |          |
-   |                |  ORIGIN AS   |               |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |  RS:1002:1-*   |  TRACER (RS  |  IXP assigned |   no   |          |
-   |                |      #)      |  ID for route |        |          |
-   |                |              |     server    |        |          |
-   |                |              |    instance   |        |          |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1000:1    |     RPKI VALID     |   Prefix is RPKI  |  yes   |
+   |                 |                    |       VALID       |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1000:2    |    RPKI UNKNOWN    |   Prefix is RPKI  |  yes   |
+   |                 |                    |      UNKNOWN      |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1000:3    |  RPKI NOT CHECKED  |                   |  yes   |
+   +-----------------+--------------------+-------------------+--------+
+   |   RS:1000:4-*   |   Prefix is RPKI   |                   |  yes   |
+   |                 | INVALID because of |                   |        |
+   |                 |      $REASON       |                   |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1001:1    |    IRRDB VALID     |  Prefix exists in |  yes   |
+   |                 |                    |       IRRDB       |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1001:2    | IRRDB NOT CHECKED  |   Prefix was not  |  yes   |
+   |                 |                    |  checked in IRRDB |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1001:3    | MORE SPECIFIC THAN |  Prefix does not  |  yes   |
+   |                 |       IRRDB        |  exist in IRRDB,  |        |
+   |                 |                    |     but a less    |        |
+   |                 |                    |   specific does   |        |
+   |                 |                    |    valid entry    |        |
+   |                 |                    |       exists      |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1001:4    |  IRRDB Prefix not  |   Prefix was not  |  yes   |
+   |                 | found in AS-SET or |    found in the   |        |
+   |                 |      aut-num       |   peer's as-set   |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1001:5    |   IRRDB INVALID    |  Origin AS not in |  yes   |
+   |                 |     ORIGIN AS      |    peer AS-SET    |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1001:6    |   IRRDB INVALID    |  Prefix not found |  yes   |
+   |                 | PREFIX FOR ORIGIN  |    in origin AS   |        |
+   |                 |         AS         |                   |        |
+   +-----------------+--------------------+-------------------+--------+
+   |   RS:1002:1-*   |   TRACER (RS #)    |  IXP assigned ID  |   no   |
+   |                 |                    |  for route server |        |
+   |                 |                    |      instance     |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1003:ms   |  Measured RTT for  |    IXP measured   |  yes   |
+   |                 |  advertising peer  |  round trip time  |        |
+   |                 |                    |   for peer in ms  |        |
+   +-----------------+--------------------+-------------------+--------+
+   | RS:1004:$peerAS |  Incoming Peer AS  |   Use Autonomous  |  yes   |
+   |                 |                    |  System Number of |        |
+   |                 |                    |    the incoming   |        |
 
 
 
@@ -282,54 +282,54 @@ Aelmans, et al.        Expires September 13, 2019               [Page 5]
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1003:ms   | Measured RTT |  IXP measured |  yes   |          |
-   |                |     for      |   round trip  |        |          |
-   |                | advertising  | time for peer |        |          |
-   |                |     peer     |     in ms     |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   | RS:1004:$peerA |   Incoming   |      Use      |  yes   |          |
-   |       S        |   Peer AS    |   Autonomous  |        |          |
-   |                |              | System Number |        |          |
-   |                |              |     of the    |        |          |
-   |                |              |    incoming   |        |          |
-   |                |              |   member for  |        |          |
-   |                |              |   that route  |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1005:1    |  AS Object,  |   Meant as a  |  yes   |          |
-   |                | Route Object | transitioning |        |          |
-   |                |     and      |   mechanism   |        |          |
-   |                | Organization |   until full  |        |          |
-   |                | NOT from the |      RPKI     |        |          |
-   |                | same region  |   deployment  |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1005:2    |  AS Object,  |      yes      |        |          |
-   |                | Route Object |               |        |          |
-   |                |     and      |               |        |          |
-   |                | Organization |               |        |          |
-   |                | from within  |               |        |          |
-   |                |   the same   |               |        |          |
-   |                |    region    |               |        |          |
-   +----------------+--------------+---------------+--------+----------+
-   |   RS:1005:3    |  AS Object,  |      yes      |        |          |
-   |                | Route Object |               |        |          |
-   |                |     and      |               |        |          |
-   |                | Organization |               |        |          |
-   |                | from within  |               |        |          |
-   |                |   the same   |               |        |          |
-   |                |  region Not  |               |        |          |
-   |                |   checked    |               |        |          |
-   +----------------+--------------+---------------+--------+----------+
+   |                 |                    |  member for that  |        |
+   |                 |                    |       route       |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1005:1    |  AS Object, Route  |     Meant as a    |  yes   |
+   |                 |     Object and     |   transitioning   |        |
+   |                 |  Organization NOT  |  mechanism until  |        |
+   |                 |   from the same    |     full RPKI     |        |
+   |                 |       region       |     deployment    |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1005:2    |  AS Object, Route  |        yes        |        |
+   |                 |     Object and     |                   |        |
+   |                 | Organization from  |                   |        |
+   |                 |  within the same   |                   |        |
+   |                 |       region       |                   |        |
+   +-----------------+--------------------+-------------------+--------+
+   |    RS:1005:3    |  AS Object, Route  |        yes        |        |
+   |                 |     Object and     |                   |        |
+   |                 | Organization from  |                   |        |
+   |                 |  within the same   |                   |        |
+   |                 | region Not checked |                   |        |
+   +-----------------+--------------------+-------------------+--------+
 
                 Table 5: Informational tags RS:1000-1099:*
 
-   +-------------+-----------------+---------------+--------+----------+
-   |    Range    |   Description   |     Notes     | Strip  | Priority |
-   |             |                 |               |   on   |          |
-   |             |                 |               | export |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:1  |  Prefix length  |               |        |          |
-   |             |     too long    |               |        |          |
+   +--------------+---------------------+--------------------+---------+
+   |    Range     |     Description     |       Notes        |  Strip  |
+   |              |                     |                    |    on   |
+   |              |                     |                    |  export |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:1   |  Prefix length too  |                    |         |
+   |              |         long        |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:2   |  Prefix length too  |                    |         |
+   |              |        short        |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:3   |     Bogon Prefix    |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:4   |       Bogon AS      |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:5   |   AS path too long  |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:6   |  AS path too short  |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:7   |   as-path.first !=  |                    |         |
+   |              |        peeras       |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:8   | next hop IP != peer |                    |         |
+   |              |          IP         |                    |         |
 
 
 
@@ -338,53 +338,53 @@ Aelmans, et al.        Expires September 13, 2019               [Page 6]
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:2  |  Prefix length  |               |        |          |
-   |             |    too short    |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:3  |   Bogon Prefix  |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:4  |     Bogon AS    |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:5  |   AS path too   |               |        |          |
-   |             |       long      |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:6  |   AS path too   |               |        |          |
-   |             |      short      |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:7  |  as-path.first  |               |        |          |
-   |             |    != peeras    |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:8  |  next hop IP != |               |        |          |
-   |             |     peer IP     |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:9  |   IRRDB Prefix  |   Prefix was  |        |          |
-   |             |   not found in  |  not found in |        |          |
-   |             |  AS-SET or aut- |   the peer's  |        |          |
-   |             |       num       |     as-set    |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:10 |  Origin AS not  |               |        |          |
-   |             |  in peer AS-SET |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:11 |    Prefix not   |               |        |          |
-   |             | found in origin |               |        |          |
-   |             |        AS       |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:12 |  Prefix is RPKI |               |        |          |
-   |             |     UNKNOWN     |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:13 |  Prefix is RPKI |               |        |          |
-   |             |     INVALID     |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:14 |   Transit-free  |               |        |          |
-   |             |  ASN in AS-Path |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
-   |  RS:1101:15 |   Too many BGP  |               |        |          |
-   |             | communities set |               |        |          |
-   |             |    on prefix    |               |        |          |
-   +-------------+-----------------+---------------+--------+----------+
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:9   |   IRRDB Prefix not  |   Prefix was not   |         |
+   |              |  found in AS-SET or |    found in the    |         |
+   |              |       aut-num       |   peer's as-set    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:10  |   Origin AS not in  |                    |         |
+   |              |     peer AS-SET     |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:11  | Prefix not found in |                    |         |
+   |              |      origin AS      |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:12  |    Prefix is RPKI   |                    |         |
+   |              |       UNKNOWN       |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:13  |    Prefix is RPKI   |                    |         |
+   |              |       INVALID       |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:14  | Transit-free ASN in |                    |         |
+   |              |       AS-Path       |                    |         |
+   +--------------+---------------------+--------------------+---------+
+   |  RS:1101:15  |     Too many BGP    |                    |         |
+   |              |  communities set on |                    |         |
+   |              |        prefix       |                    |         |
+   +--------------+---------------------+--------------------+---------+
 
                    Table 6: Informational RS:1000-1999:*
+
+   +--------------+-------------------+-----------------------+--------+
+   |    Range     |    Description    |         Notes         | Strip  |
+   |              |                   |                       |   on   |
+   |              |                   |                       | export |
+   +--------------+-------------------+-----------------------+--------+
+   |  RS:1102:1   |  Advertising peer | Advertising peer does |        |
+   |              |  declines prefix  |    not want you to    |        |
+   |              |                   |     receive prefix    |        |
+   +--------------+-------------------+-----------------------+--------+
+   |  RS:1102:2   |    You declined   |   You do not want to  |        |
+   |              |    prefix from    |  receive prefix from  |        |
+   |              |  advertising peer |    advertising peer   |        |
+   +--------------+-------------------+-----------------------+--------+
+   |  RS:1102:3   | Maximum number of |                       |        |
+   |              |  BGP communities  |                       |        |
+   |              |      exceeded     |                       |        |
+   +--------------+-------------------+-----------------------+--------+
+
+              Table 7: Route was filtered on export RS:1102:*
+
 
 
 
@@ -394,43 +394,19 @@ Aelmans, et al.        Expires September 13, 2019               [Page 7]
 Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
-   +-------------+---------------+-----------------+--------+----------+
-   |    Range    |  Description  |      Notes      | Strip  | Priority |
-   |             |               |                 |   on   |          |
-   |             |               |                 | export |          |
-   +-------------+---------------+-----------------+--------+----------+
-   |  RS:1102:1  |  Advertising  |   Advertising   |        |          |
-   |             | peer declines |  peer does not  |        |          |
-   |             |     prefix    |   want you to   |        |          |
-   |             |               |  receive prefix |        |          |
-   +-------------+---------------+-----------------+--------+----------+
-   |  RS:1102:2  |  You declined | You do not want |        |          |
-   |             |  prefix from  |    to receive   |        |          |
-   |             |  advertising  |   prefix from   |        |          |
-   |             |      peer     |   advertising   |        |          |
-   |             |               |       peer      |        |          |
-   +-------------+---------------+-----------------+--------+----------+
-   |  RS:1102:3  |    Maximum    |                 |        |          |
-   |             | number of BGP |                 |        |          |
-   |             |  communities  |                 |        |          |
-   |             |    exceeded   |                 |        |          |
-   +-------------+---------------+-----------------+--------+----------+
-
-              Table 7: Route was filtered on export RS:1102:*
-
-    +-------------+-------------+-------+-----------------+----------+
-    |    Range    | Description | Notes | Strip on export | Priority |
-    +-------------+-------------+-------+-----------------+----------+
-    |             |             |       |                 |          |
-    +-------------+-------------+-------+-----------------+----------+
+         +--------------+-------------+-------+-----------------+
+         |    Range     | Description | Notes | Strip on export |
+         +--------------+-------------+-------+-----------------+
+         |              |             |       |                 |
+         +--------------+-------------+-------+-----------------+
 
                     Table 8: Unassigned RS:1200-1899:*
 
-    +-------------+-------------+-------+-----------------+----------+
-    |    Range    | Description | Notes | Strip on export | Priority |
-    +-------------+-------------+-------+-----------------+----------+
-    |             |             |       |                 |          |
-    +-------------+-------------+-------+-----------------+----------+
+         +--------------+-------------+-------+-----------------+
+         |    Range     | Description | Notes | Strip on export |
+         +--------------+-------------+-------+-----------------+
+         |              |             |       |                 |
+         +--------------+-------------+-------+-----------------+
 
                    Free to use informational communities
 
@@ -441,14 +417,6 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
    Operators should note the recommendations in Section 11 of BGP
    Operations and Security [RFC7454] and handle BGP Large Communities
    with their ASN in the Global Administrator field similarly.
-
-
-
-
-Aelmans, et al.        Expires September 13, 2019               [Page 8]
-
-Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
-
 
 5.  IANA Considerations
 
@@ -474,6 +442,14 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
               DOI 10.17487/RFC4271, January 2006,
               <https://www.rfc-editor.org/info/rfc4271>.
 
+
+
+
+Aelmans, et al.        Expires September 13, 2019               [Page 8]
+
+Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
+
+
    [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
               and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
               February 2015, <https://www.rfc-editor.org/info/rfc7454>.
@@ -497,15 +473,6 @@ Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-
-
-
-
-Aelmans, et al.        Expires September 13, 2019               [Page 9]
-
-Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
-
-
 8.2.  Informative References
 
    [EURO-IX]  EURO-IX, "Large BGP Communities", April 2018,
@@ -525,6 +492,18 @@ Authors' Addresses
    The Netherlands
 
    Email: maelmans@juniper.net
+
+
+
+
+
+
+
+
+
+Aelmans, et al.        Expires September 13, 2019               [Page 9]
+
+Internet-Draft BPG Large Communities at IXP Route Servers     March 2019
 
 
    Stavros Konstantaras
@@ -552,6 +531,27 @@ Authors' Addresses
    Germany
 
    Email: christoph.dietzel@de-cix.net
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

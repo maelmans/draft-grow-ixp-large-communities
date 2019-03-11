@@ -177,71 +177,66 @@
                     <ttcol align="center">Description</ttcol>
                     <ttcol align="center">Notes</ttcol>
                     <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-                    <c>RS:1000:1</c><c>RPKI VALID</c><c>Prefix is RPKI VALID</c><c>yes</c><c></c>
-                    <c>RS:1000:2</c><c>RPKI UNKNOWN</c><c>Prefix is RPKI UNKNOWN</c><c>yes</c><c></c>
-                    <c>RS:1000:3</c><c>RPKI NOT CHECKED</c><c></c><c>yes</c><c></c>
-                    <c>RS:1000:4-*</c><c>Prefix is RPKI INVALID because of $REASON</c><c></c><c>yes</c><c></c>
-                    <c>RS:1001:1</c><c>IRRDB VALID</c><c>Prefix exists in IRRDB</c><c>yes</c><c></c>
-                    <c>RS:1001:2</c><c>IRRDB NOT CHECKED</c><c>Prefix was not checked in IRRDB</c><c>yes</c><c></c>
-                    <c>RS:1001:3</c><c>MORE SPECIFIC THAN IRRDB</c><c>Prefix does not exist in IRRDB, but a less  specific does valid entry exists</c><c>yes</c><c></c>
-                    <c>RS:1001:4</c><c>IRRDB Prefix not found in AS-SET or aut-num</c><c>Prefix was not found in the peer's as-set</c><c>yes</c><c></c>
-                    <c>RS:1001:5</c><c>IRRDB INVALID ORIGIN AS</c><c>Origin AS not in peer AS-SET</c><c>yes</c><c></c>
-                    <c>RS:1001:6</c><c>IRRDB INVALID PREFIX FOR ORIGIN AS</c><c>Prefix not found in origin AS</c><c>yes</c><c></c>
-                    <c>RS:1002:1-*</c><c>TRACER (RS #)</c><c>IXP assigned ID for route server instance</c><c>no</c><c></c>
-                    <c>RS:1003:ms</c><c>Measured RTT for advertising peer</c><c>IXP measured round trip time for peer in ms</c><c>yes</c><c></c>
-                    <c>RS:1004:$peerAS</c><c>Incoming Peer AS</c><c>Use Autonomous System Number of the incoming member for that route</c><c>yes</c><c></c>
-                    <c>RS:1005:1</c><c>AS Object, Route Object and Organization NOT from the same region</c><c>Meant as a transitioning mechanism until full RPKI deployment</c><c>yes</c><c></c>
-                    <c>RS:1005:2</c><c>AS Object, Route Object and Organization from within the same region</c><c>yes</c><c></c><c></c>
-                    <c>RS:1005:3</c><c>AS Object, Route Object and Organization from within the same region Not checked</c><c>yes</c><c></c><c></c>
+                    <c>RS:1000:1</c><c>RPKI VALID</c><c>Prefix is RPKI VALID</c><c>yes</c>
+                    <c>RS:1000:2</c><c>RPKI UNKNOWN</c><c>Prefix is RPKI UNKNOWN</c><c>yes</c>
+                    <c>RS:1000:3</c><c>RPKI NOT CHECKED</c><c></c><c>yes</c>
+                    <c>RS:1000:4-*</c><c>Prefix is RPKI INVALID because of $REASON</c><c></c><c>yes</c>
+                    <c>RS:1001:1</c><c>IRRDB VALID</c><c>Prefix exists in IRRDB</c><c>yes</c>
+                    <c>RS:1001:2</c><c>IRRDB NOT CHECKED</c><c>Prefix was not checked in IRRDB</c><c>yes</c>
+                    <c>RS:1001:3</c><c>MORE SPECIFIC THAN IRRDB</c><c>Prefix does not exist in IRRDB, but a less  specific does valid entry exists</c><c>yes</c>
+                    <c>RS:1001:4</c><c>IRRDB Prefix not found in AS-SET or aut-num</c><c>Prefix was not found in the peer's as-set</c><c>yes</c>
+                    <c>RS:1001:5</c><c>IRRDB INVALID ORIGIN AS</c><c>Origin AS not in peer AS-SET</c><c>yes</c>
+                    <c>RS:1001:6</c><c>IRRDB INVALID PREFIX FOR ORIGIN AS</c><c>Prefix not found in origin AS</c><c>yes</c>
+                    <c>RS:1002:1-*</c><c>TRACER (RS #)</c><c>IXP assigned ID for route server instance</c><c>no</c>
+                    <c>RS:1003:ms</c><c>Measured RTT for advertising peer</c><c>IXP measured round trip time for peer in ms</c><c>yes</c>
+                    <c>RS:1004:$peerAS</c><c>Incoming Peer AS</c><c>Use Autonomous System Number of the incoming member for that route</c><c>yes</c>
+                    <c>RS:1005:1</c><c>AS Object, Route Object and Organization NOT from the same region</c><c>Meant as a transitioning mechanism until full RPKI deployment</c><c>yes</c>
+                    <c>RS:1005:2</c><c>AS Object, Route Object and Organization from within the same region</c><c>yes</c><c></c>
+                    <c>RS:1005:3</c><c>AS Object, Route Object and Organization from within the same region Not checked</c><c>yes</c><c></c>
                 </texttable>
                 <texttable anchor="table_filtered-on-import" title="Informational RS:1000-1999:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
                     <ttcol align="center">Description</ttcol>
                     <ttcol align="center">Notes</ttcol>
                     <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-                    <c>RS:1101:1</c><c>Prefix length too long</c><c></c><c></c><c></c>
-                    <c>RS:1101:2</c><c>Prefix length too short</c><c></c><c></c><c></c>
-                    <c>RS:1101:3</c><c>Bogon Prefix</c><c></c><c></c><c></c>
-                    <c>RS:1101:4</c><c>Bogon AS</c><c></c><c></c><c></c>
-                    <c>RS:1101:5</c><c>AS path too long</c><c></c><c></c><c></c>
-                    <c>RS:1101:6</c><c>AS path too short</c><c></c><c></c><c></c>
-                    <c>RS:1101:7</c><c>as-path.first != peeras</c><c></c><c></c><c></c>
-                    <c>RS:1101:8</c><c>next hop IP != peer IP</c><c></c><c></c><c></c>
-                    <c>RS:1101:9</c><c>IRRDB Prefix not found in AS-SET or aut-num</c><c>Prefix was not found in the peer's as-set</c><c></c><c></c>
-                    <c>RS:1101:10</c><c>Origin AS not in peer AS-SET</c><c></c><c></c><c></c>
-                    <c>RS:1101:11</c><c>Prefix not found in origin AS</c><c></c><c></c><c></c>
-                    <c>RS:1101:12</c><c>Prefix is RPKI UNKNOWN</c><c></c><c></c><c></c>
-                    <c>RS:1101:13</c><c>Prefix is RPKI INVALID</c><c></c><c></c><c></c>
-                    <c>RS:1101:14</c><c>Transit-free ASN in AS-Path</c><c></c><c></c><c></c>
-                    <c>RS:1101:15</c><c>Too many BGP communities set on prefix</c><c></c><c></c><c></c>
+                    <c>RS:1101:1</c><c>Prefix length too long</c><c></c><c></c>
+                    <c>RS:1101:2</c><c>Prefix length too short</c><c></c><c></c>
+                    <c>RS:1101:3</c><c>Bogon Prefix</c><c></c><c></c>
+                    <c>RS:1101:4</c><c>Bogon AS</c><c></c><c></c>
+                    <c>RS:1101:5</c><c>AS path too long</c><c></c><c></c>
+                    <c>RS:1101:6</c><c>AS path too short</c><c></c><c></c>
+                    <c>RS:1101:7</c><c>as-path.first != peeras</c><c></c><c></c>
+                    <c>RS:1101:8</c><c>next hop IP != peer IP</c><c></c><c></c>
+                    <c>RS:1101:9</c><c>IRRDB Prefix not found in AS-SET or aut-num</c><c>Prefix was not found in the peer's as-set</c><c></c>
+                    <c>RS:1101:10</c><c>Origin AS not in peer AS-SET</c><c></c><c></c>
+                    <c>RS:1101:11</c><c>Prefix not found in origin AS</c><c></c><c></c>
+                    <c>RS:1101:12</c><c>Prefix is RPKI UNKNOWN</c><c></c><c></c>
+                    <c>RS:1101:13</c><c>Prefix is RPKI INVALID</c><c></c><c></c>
+                    <c>RS:1101:14</c><c>Transit-free ASN in AS-Path</c><c></c><c></c>
+                    <c>RS:1101:15</c><c>Too many BGP communities set on prefix</c><c></c><c></c>
                 </texttable>
                 <texttable anchor="table_filtered-on-export" title="Route was filtered on export RS:1102:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
                     <ttcol align="center">Description</ttcol>
                     <ttcol align="center">Notes</ttcol>
                     <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-                    <c>RS:1102:1</c><c>Advertising peer declines prefix</c><c>Advertising peer does not want you to receive prefix</c><c></c><c></c>
-                    <c>RS:1102:2</c><c>You declined prefix from advertising peer</c><c>You do not want to receive prefix from advertising peer</c><c></c><c></c>
-                    <c>RS:1102:3</c><c>Maximum number of BGP communities exceeded</c><c></c><c></c><c></c>
+                    <c>RS:1102:1</c><c>Advertising peer declines prefix</c><c>Advertising peer does not want you to receive prefix</c><c></c>
+                    <c>RS:1102:2</c><c>You declined prefix from advertising peer</c><c>You do not want to receive prefix from advertising peer</c><c></c>
+                    <c>RS:1102:3</c><c>Maximum number of BGP communities exceeded</c><c></c><c></c>
                 </texttable>
                 <texttable anchor="table_unassigned-1200-1899" title="Unassigned RS:1200-1899:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
                     <ttcol align="center">Description</ttcol>
                     <ttcol align="center">Notes</ttcol>
                     <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-                    <c></c><c></c><c></c><c></c><c></c>
+                    <c></c><c></c><c></c><c></c>
                 </texttable>
                <texttable anchor="table_ixp-specific" title="IXP Specific RS:1900-1999:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
                     <ttcol align="center">Description</ttcol>
                     <ttcol align="center">Notes</ttcol>
                     <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-                    <c></c><c></c><c></c><c></c><c></c>
+                    <c></c><c></c><c></c><c></c>
 		    <postamble>Free to use informational communities</postamble>
                 </texttable>
             </section>
