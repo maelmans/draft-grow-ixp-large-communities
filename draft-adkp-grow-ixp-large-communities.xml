@@ -210,8 +210,8 @@
                     <c>RS:1003:ms</c><c>Measured RTT for advertising peer</c><c>IXP measured round trip time for peer in ms</c><c>yes</c>
                     <c>RS:1004:$peerAS</c><c>Incoming Peer AS</c><c>Use Autonomous System Number of the incoming member for that route</c><c>yes</c>
                     <c>RS:1005:1</c><c>AS Object, Route Object and Organization NOT from the same region</c><c>Meant as a transitioning mechanism until full RPKI deployment</c><c>yes</c>
-                    <c>RS:1005:2</c><c>AS Object, Route Object and Organization from within the same region</c><c>yes</c><c></c>
-                    <c>RS:1005:3</c><c>AS Object, Route Object and Organization from within the same region Not checked</c><c>yes</c><c></c>
+                    <c>RS:1005:2</c><c>AS Object, Route Object and Organization from within the same region</c><c></c><c>yes</c>
+                    <c>RS:1005:3</c><c>AS Object, Route Object and Organization from within the same region Not checked</c><c></c><c>yes</c>
                 </texttable>
                 <texttable anchor="table_filtered-on-import" title="Informational RS:1000-1999:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
