@@ -40,7 +40,7 @@
                     <street>Boeing Avenue 240</street>
                     <code>1119 PZ</code>
                     <city>Schiphol-Rijk</city>
-                    <country>The Netherlands</country>
+                    <country>NL</country>
                 </postal>
 
                 <email>maelmans@juniper.net</email>
@@ -48,14 +48,14 @@
         </author>
 
         <author fullname="Stavros Konstantaras" initials="S." surname="Konstantaras">
-            <organization>AMS-IX</organization>
+            <organization>Amsterdam Internet Exchange</organization>
 
             <address>
                 <postal>
-                    <street>Frederiksplein 42</street>
-                    <code>1017 XN</code>
+                    <street>Vijzelstraat 70</street>
+                    <code>1017 HL</code>
                     <city>Amsterdam</city>
-                    <country>The Netherlands</country>
+                    <country>NL</country>
                 </postal>
 
                 <email>stavros.konstantaras@ams-ix.net</email>
@@ -131,17 +131,22 @@
 		This list proposes a standard to use in IXP operations for the use of BGP Large Communities. It was first published at the EURO-IX website <xref target="EURO-IX" />.
             </t>
             <t>
-                The tables below provide a per 'section' divided overview of Large Community usage.
+                The standard proposes the use of the first octet of the BGP Large communities to be used for the Autonomous System (AS) number of the operator's Route Servers. The second and third octes of the BGP Large Communities are organized according to the follow sub sections.
 	    </t>
+            <section title="Operational Large BGP Communities">
+            <t>For operational reasons and to signal key functionalities to the IXP Route Servers, the range of 0-999 of the second octet is reserved. In the tables below we provide a better clarification of the usage of this range.
+            </t>
+            <t>The operational BGP Large communities MUST be removed from the IXP operator when the prefixes are being announced to the IXP members or BGP peers.  
+            </t>
                 <texttable anchor="table_direct" title="Direct filtering RS:0-99:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
                     <ttcol align="center">Description</ttcol>
                     <ttcol align="center">Notes</ttcol>
                     <ttcol align="center">Strip on export</ttcol>
 		    <ttcol align="center">Priority</ttcol>
-                    <c>RS:0:PEERAS</c><c>Do not advertise to PEERAS</c><c></c><c>recommended</c><c>0</c>
-		    <c>RS:1:PEERAS</c><c>Advertise to PEERAS</c><c>Only useful in combination with RS:0:0</c><c>recommended</c><c>1</c>
-		    <c>RS:2:ms</c><c>Do not announce to peers higher than ms</c><c>ms = Latency of peer in ms</c><c>recommended</c><c>2</c>
+                    <c>RS:0:PEERAS</c><c>Do not advertise to PEERAS</c><c></c><c>yes</c><c>0</c>
+		    <c>RS:1:PEERAS</c><c>Advertise to PEERAS</c><c>Only useful in combination with RS:0:0</c><c>yes</c><c>1</c>
+		    <c>RS:2:ms</c><c>Do not announce to peers higher than ms</c><c>ms = Latency of peer in ms</c><c>yes</c><c>2</c>
                 </texttable>
                 <texttable anchor="table_prepend" title="AS Path prepending RS:100-199:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
@@ -164,6 +169,20 @@
                     <ttcol align="center">Priority</ttcol>
                     <c></c><c></c><c></c><c></c><c></c>
                 </texttable>
+                <texttable anchor="table_ixp_specific" title="IXP Specific RS:900-999:*" style="all">
+                    <ttcol align="center" width="20%">Range</ttcol>
+                    <ttcol align="center">Description</ttcol>
+                    <ttcol align="center">Notes</ttcol>
+                    <ttcol align="center">Strip on export</ttcol>
+                    <ttcol align="center">Priority</ttcol>
+                    <c></c><c></c><c></c><c></c><c></c>
+                </texttable>
+		</section>
+                <section title="Informational Large BGP Communities">
+            	<t>For informational reasons and to signal key functionalities to the IXP Route Servers, the range of 1000-1999 of the second octet is reserved. In the tables below we provide a better clarification of the usage of this range.
+            	</t>
+            <t>The informational BGP Large communities MAY be removed from the IXP operator when the prefixes are being announced to the IXP members or BGP peers. The standard proposes a detailed recommedation per Large community in the tables below.
+            </t>
                 <texttable anchor="table_informational" title="Informational RS:1000-1999:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
                     <ttcol align="center">Description</ttcol>
@@ -239,6 +258,7 @@
                     <c></c><c></c><c></c><c></c>
 		    <postamble>Free to use informational communities</postamble>
                 </texttable>
+               </section>
             </section>
        <section title="Security Considerations">
            <t>
