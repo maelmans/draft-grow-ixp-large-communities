@@ -118,13 +118,13 @@
                 This document presents suggestions for the application of BGP Large Communities <xref target="RFC8092" /> to IXP operators and members using the BGP <xref target="RFC4271" /> protocol.
 		It adds specific suggestions for the operators and members of IXPs deploying BGP Large Communities as suggested in <xref target="RFC8195" />.
             </t>
-        </section>
-        <section title="Justification">
+          <section title="Justification">
             <t>
 		Networks operating in the DFZ tend to exchange routing information at multiple IXP in order to improve redundancy and geographical optimization. 
 		Besides 'the typical' IXP members an increasing amount of enterprise networks connect to IXPs. They have additional requirements.
 		In order to offer a uniform mode of operation across different IXPs there is a need to provide standards.
             </t>
+          </section>
         </section>
         <section title="Suggested Large BGP Community Standard List">
             <t>
@@ -198,8 +198,10 @@
                     <ttcol align="center">Strip on export</ttcol>
                     <c>RS:1000:1</c><c>RPKI VALID</c><c>Prefix is RPKI VALID</c><c>yes</c>
                     <c>RS:1000:2</c><c>RPKI UNKNOWN</c><c>Prefix is RPKI UNKNOWN</c><c>yes</c>
-                    <c>RS:1000:3</c><c>RPKI NOT CHECKED</c><c></c><c>yes</c>
-                    <c>RS:1000:4-*</c><c>Prefix is RPKI INVALID because of $REASON</c><c></c><c>yes</c>
+                    <c>RS:1000:3</c><c>RPKI NOT CHECKED</c><c>Prefix was not RPKI checked</c><c>yes</c>
+                    <c>RS:1000:4</c><c>RPKI INVALID No reason specified</c><c>Prefix is RPKI invalid, but no reason was given</c><c>yes</c>
+                    <c>RS:1000:5</c><c>RPKI INVALID Origin AS is invalid</c><c>Prefix is RPKI invalid because the origin AS is invalid</c><c>yes</c>
+                    <c>RS:1000:6</c><c>RPKI INVALID Max-length is invalid</c><c>Prefix is RPKI invalid because the Max-length is invalid</c><c>yes</c>
                     <c>RS:1001:1</c><c>IRRDB VALID</c><c>Prefix exists in IRRDB</c><c>yes</c>
                     <c>RS:1001:2</c><c>IRRDB NOT CHECKED</c><c>Prefix was not checked in IRRDB</c><c>yes</c>
                     <c>RS:1001:3</c><c>MORE SPECIFIC THAN IRRDB</c><c>Prefix does not exist in IRRDB, but a less  specific does valid entry exists</c><c>yes</c>
