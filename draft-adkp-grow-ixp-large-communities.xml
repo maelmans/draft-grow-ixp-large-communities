@@ -114,7 +114,7 @@
 
         <abstract>
             <t>
-                This document presents suggestion and examples for application of BGP Large Communities <xref target="RFC8092" /> at Internet Exchange Points (IXPs). Suggestions are based on operational experiences from IXP operators and members.
+                This document presents suggestion and examples for the application of BGP Large Communities <xref target="RFC8092" /> at Internet Exchange Points (IXPs). Suggestions are based on operational experiences from IXP operators and members.
 		Any IXP operator or IXP member can consider using these communities. The document specifically focusses on Route Server <xref target="RFC7947" /> deployments in IXP context <xref target="RFC7948" />.
             </t>
         </abstract>
