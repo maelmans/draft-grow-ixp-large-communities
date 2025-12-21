@@ -132,18 +132,18 @@
             </t>
           <section title="Justification">
             <t>
-		Networks operating in the DFZ tend to exchange routing information at multiple IXP in order to improve redundancy and geographical optimization. 
-		Besides 'the typical' IXP members an increasing amount of enterprise networks connect to IXPs. They have additional requirements.
+		Networks operating in the DFZ tend to exchange routing information at multiple IXPs in order to improve redundancy and geographical optimization. 
+		Besides 'the typical' IXP members, an increasing amount of enterprise networks connect to IXPs. They have additional requirements.
 		In order to offer a uniform mode of operation across different IXPs there is a need to provide standards.
             </t>
           </section>
         </section>
         <section title="Suggested Large BGP Community Standard List">
             <t>
-		This list proposes a standard to use in IXP operations for the use of BGP Large Communities. It was first published at the EURO-IX website <xref target="EURO-IX" />.
+		This list proposes a standard to be implemented in IXP operations for the use of BGP Large Communities. It was first published on the Euro-IX website <xref target="EURO-IX" />.
             </t>
             <t>
-                The standard proposes the use of the first octet of the BGP Large communities to be used for the Autonomous System (AS) number of the operator's Route Servers. The second and third octes of the BGP Large Communities are organized according to the follow sub sections.
+                The standard proposes the use of the first octet of the BGP Large communities to represent the Autonomous System (AS) number of the operator's Route Servers. The second and third octets of the BGP Large Communities are organized according to the following sub sections.
 	    </t>
             <section title="Operational Large BGP Communities">
             <t>For operational reasons and to signal key functionalities to the IXP Route Servers, the range of 0-999 of the second octet is reserved. In the tables below we provide a better clarification of the usage of this range.
