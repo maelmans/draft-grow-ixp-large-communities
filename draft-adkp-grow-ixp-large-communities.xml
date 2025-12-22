@@ -39,7 +39,7 @@
                     <country>NL</country>
                 </postal>
 
-                <email>maelmans@juniper.net</email>
+                <email>melchior@aelmans.eu</email>
             </address>
         </author>
 
@@ -110,7 +110,7 @@
 
         <abstract>
             <t>
-                This document presents suggestion and examples for the application of BGP Large Communities <xref target="RFC8092" /> at Internet Exchange Points (IXPs). Suggestions are based on operational experiences from IXP operators and members.
+                This document presents suggestions and examples for the application of BGP Large Communities <xref target="RFC8092" /> at Internet Exchange Points (IXPs). Suggestions are based on operational experiences from IXP operators and members.
 		Any IXP operator or IXP member can consider using these communities. The document specifically focuses on Route Server <xref target="RFC7947" /> deployments in IXP context <xref target="RFC7948" />.
             </t>
         </abstract>
@@ -136,10 +136,10 @@
         </section>
         <section title="Suggested Large BGP Community Standard List">
             <t>
-		This list proposes a standard to be implemented in IXP operations for the use of BGP Large Communities. It was first published on the Euro-IX website <xref target="EURO-IX" />.
+		This list proposes a standard for implementing BGP Large Communities in IXP operations. It was first published on the Euro-IX website <xref target="EURO-IX" />.
             </t>
             <t>
-                The standard proposes the use of the first octet of the BGP Large communities to represent the Autonomous System (AS) number of the operator's Route Servers. The second and third octets of the BGP Large Communities are organized according to the following sub sections.
+                The standard proposes using the first octet of the BGP Large communities to represent the Autonomous System (AS) number of the operator's Route Servers. The second and third octets of the BGP Large Communities are organized according to the following sub-sections.
 	    </t>
             <section title="Operational Large BGP Communities">
             <t>For operational reasons and to signal key functionalities to the IXP Route Servers, the range of 0-999 of the second octet is reserved. In the tables below we provide a better clarification of the usage of this range.
@@ -189,7 +189,7 @@
                 <section title="Informational Large BGP Communities">
             	<t>For informational reasons and to signal key functionalities to the IXP Route Servers, the range of 1000-1999 of the second octet is reserved. In the tables below we provide a better clarification of the usage of this range.
             	</t>
-            <t>The informational BGP Large communities MAY be removed from the IXP operator when the prefixes are being announced to the IXP members or BGP peers. The standard proposes a detailed recommedation per Large community in the tables below.
+            <t>The informational BGP Large communities MAY be removed from the IXP operator when the prefixes are being announced to the IXP members or BGP peers. The standard proposes detailed recommendations for each Large community in the tables below.
             </t>
                 <texttable anchor="table_informational" title="Informational RS:1000-1999:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
@@ -212,7 +212,7 @@
                     <c>RS:1000:6</c><c>RPKI INVALID Max-length is invalid</c><c>Prefix is RPKI invalid because the Max-length is invalid</c><c>yes</c>
                     <c>RS:1001:1</c><c>IRRDB VALID</c><c>Prefix exists in IRRDB</c><c>yes</c>
                     <c>RS:1001:2</c><c>IRRDB NOT CHECKED</c><c>Prefix was not checked in IRRDB</c><c>yes</c>
-                    <c>RS:1001:3</c><c>MORE SPECIFIC THAN IRRDB</c><c>Prefix does not exist in IRRDB, but a less  specific does valid entry exists</c><c>yes</c>
+                    <c>RS:1001:3</c><c>MORE SPECIFIC THAN IRRDB</c><c>Prefix does not exist in IRRDB, but a less specific prefix valid entry does exists</c><c>yes</c>
                     <c>RS:1001:4</c><c>IRRDB Prefix not found in AS-SET or aut-num</c><c>Prefix was not found in the peer's as-set</c><c>yes</c>
                     <c>RS:1001:5</c><c>IRRDB INVALID ORIGIN AS</c><c>Origin AS not in peer AS-SET</c><c>yes</c>
                     <c>RS:1001:6</c><c>IRRDB INVALID PREFIX FOR ORIGIN AS</c><c>Prefix not found in origin AS</c><c>yes</c>
@@ -272,7 +272,7 @@
             </section>
        <section title="Security Considerations">
            <t>
-		Operators should note the recommendations in Section 11 of BGP Operations and Security <xref target="RFC7454"/> and handle BGP Large Communities with their ASN in the Global Administrator field similarly.
+		Operators should note the recommendations in Section 11 of BGP Operations and Security <xref target="RFC7454"/> and handle BGP Large Communities with their ASN in the Global Administrator field in a similar manner.
             </t>
         </section>
 
