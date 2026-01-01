@@ -58,21 +58,6 @@
             </address>
         </author>
 
-        <author fullname="Stefan Plug" initials="S." surname="Plug">
-            <organization>ECIX - Megaport</organization>
-
-            <address>
-                <postal>
-                    <street>Tauentzienstr. 11</street>
-                    <code>10789</code>
-                    <city>Berlin</city>
-                    <country>Germany</country>
-                </postal>
-
-                <email>spl@ecix.net</email>
-            </address>
-        </author>
-
        <author fullname="Christoph Dietzel" initials="C." surname="Dietzel">
             <organization>DE-CIX</organization>
 
@@ -283,7 +268,7 @@
 
         <section title="Acknowledgments">
             <t>
-		The authors would like to thank Colby Barth (Juniper Networks) and Bijal Sanghani (EURO-IX) for their support, insightful review, and comments.
+		The authors would like to thank Stefan Plug (Strato), Colby Barth (Juniper Networks) and Bijal Sanghani (EURO-IX) for their support, insightful review, and comments.
             </t>
         </section>
 
