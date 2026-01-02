@@ -22,7 +22,7 @@
 
 <rfc category="info"
     ipr="trust200902"
-    docName="draft-adkp-grow-ixpcommunities-00"
+    docName="draft-adkp-grow-ixpcommunities-01"
     updates="7947,7948"
     submissionType="IETF">
 
@@ -114,8 +114,8 @@
           <section title="Justification">
             <t>
 		Networks operating in the DFZ tend to exchange routing information at multiple IXPs in order to improve redundancy and geographical optimization. 
-		Besides 'the typical' IXP members, an increasing amount of enterprise networks connect to IXPs. They have additional requirements.
-		In order to offer a uniform mode of operation across different IXPs there is a need to provide standards.
+		Besides 'the typical' IXP members, an increasing amount of enterprise networks connect to IXPs, introducing additional requirements.
+		In order to offer a uniform model of operations across different exchange points and regions, there is a need to provide a standard set of BGP Large Communities.
             </t>
           </section>
         </section>
@@ -154,7 +154,26 @@
                     <c>RS:112:ms</c><c>Prepend twice to peers higher than ms</c><c></c><c>yes</c><c>3</c>
                     <c>RS:113:ms</c><c>Prepend three to peers higher than ms</c><c></c><c>yes</c><c>3</c>
                 </texttable>
-                <texttable anchor="table_unassigned" title="Unassigned RS:200-899:*" style="all">
+                <texttable anchor="table_unassigned_1" title="Unassigned RS:200-665:*" style="all">
+                    <ttcol align="center" width="20%">Range</ttcol>
+                    <ttcol align="center">Description</ttcol>
+                    <ttcol align="center">Notes</ttcol>
+                    <ttcol align="center">Strip on export</ttcol>
+                    <ttcol align="center">Priority</ttcol>
+                    <c></c><c></c><c></c><c></c><c></c>
+                </texttable>
+
+                <texttable anchor="table_rtbh" title="BLACKHOLE Communities RS:666:*" style="all">
+                    <ttcol align="center" width="20%">Range</ttcol>
+                    <ttcol align="center">Description</ttcol>
+                    <ttcol align="center">Notes</ttcol>
+                    <ttcol align="center">Strip on export</ttcol>
+                    <ttcol align="center">Priority</ttcol>
+		    <c>RS:666:0</c><c>BLACKHOLE Community</c><c>Community to signal Remote Triggered Blackholing</c><c>yes</c><c>3</c>
+                    <c></c><c></c><c></c><c></c><c></c>
+                </texttable>
+
+                <texttable anchor="table_unassigned_2" title="Unassigned RS:667-899:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
                     <ttcol align="center">Description</ttcol>
                     <ttcol align="center">Notes</ttcol>
@@ -176,14 +195,6 @@
             	</t>
             <t>The informational BGP Large communities MAY be removed from the IXP operator when the prefixes are being announced to the IXP members or BGP peers. The standard proposes detailed recommendations for each Large community in the tables below.
             </t>
-                <texttable anchor="table_informational" title="Informational RS:1000-1999:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-                    <c></c><c></c><c></c><c></c><c></c>
-                </texttable>
                <texttable anchor="table_informationaltags" title="Informational tags RS:1000-1099:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
                     <ttcol align="center">Description</ttcol>
