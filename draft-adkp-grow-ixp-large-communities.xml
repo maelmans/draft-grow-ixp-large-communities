@@ -112,20 +112,13 @@
 		It adds specific suggestions for operators and members of IXPs deploying BGP Large Communities as suggested in <xref target="RFC8195" />.
             </t>
           <section title="Justification">
-            <t>
-		Networks operating in the DFZ tend to exchange routing information at multiple IXPs in order to improve redundancy and geographical optimization. 
-		Besides 'the typical' IXP members, an increasing amount of enterprise networks connect to IXPs, introducing additional requirements.
-		In order to offer a uniform model of operations across different exchange points and regions, there is a need to provide a standard set of BGP Large Communities.
+            <t> Networks operating in the DFZ commonly exchange routing information across multiple IXPs to increase path diversity, improve resiliency, and optimize traffic locality. In addition to the traditional population of IXP participants, an increasing number of enterprise networks are establishing peering sessions at exchange points, thereby introducing additional operational and policy considerations. To ensure consistent behavior across IXPs and geographic regions, a standardized set of BGP Large Communities is required to provide uniform signaling semantics and interoperable operational practices.
             </t>
           </section>
         </section>
         <section title="Suggested Large BGP Community Standard List">
-            <t>
-		This list proposes a standard for implementing BGP Large Communities in IXP operations. It was first published on the Euro-IX website <xref target="EURO-IX" />.
+            <t> This document defines a proposed standard for the use of BGP Large Communities in IXP operational environments. The initial version of this specification was published on the Euro‑IX website <xref target="EURO-IX" />. Under this scheme, the first octet of the BGP Large Community value is used to encode the Autonomous System (AS) number of the operator’s Route Servers. The second and third octets are structured as described in the following sub‑sections. 
             </t>
-            <t>
-                The standard proposes using the first octet of the BGP Large communities to represent the Autonomous System (AS) number of the operator's Route Servers. The second and third octets of the BGP Large Communities are organized according to the following sub-sections.
-	    </t>
             <section title="Operational Large BGP Communities">
             <t>For operational reasons and to signal key functionalities to the IXP Route Servers, the range of 0-999 of the second octet is reserved. In the tables below we provide a better clarification of the usage of this range.
             </t>
