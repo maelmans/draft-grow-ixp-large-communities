@@ -57,23 +57,8 @@
                 <email>stavros.konstantaras@ams-ix.net</email>
             </address>
         </author>
-
-       <author fullname="Christoph Dietzel" initials="C." surname="Dietzel">
-            <organization>DE-CIX</organization>
-
-            <address>
-                <postal>
-                    <street>Lindleystr. 12</street>
-                    <code>60314</code>
-                    <city>Frankfurt am Main</city>
-                    <country>Germany</country>
-                </postal>
-
-                <email>christoph.dietzel@de-cix.net</email>
-            </address>
-        </author>
 				
-				<author fullname="Massimiliano Stucchi" initials="M" surname="Stucchi">
+		<author fullname="Massimiliano Stucchi" initials="M" surname="Stucchi">
             <organization>Glevia GmbH</organization>
 
             <address>
@@ -108,21 +93,30 @@
     <middle>
         <section title="Introduction">
             <t>
-                This document presents suggestions for the application of BGP Large Communities <xref target="RFC8092" /> for IXP operators and members using the BGP <xref target="RFC4271" /> protocol.
-		It adds specific suggestions for operators and members of IXPs deploying BGP Large Communities as suggested in <xref target="RFC8195" />.
+				This document presents operational suggestions for the application of BGP Large Communities <xref target="RFC8092" /> by IXP operators and IXP members using the BGP protocol as specified in <xref target="RFC4271" />. The goal is to provide guidance on how to encode and interpret policy signals in a consistent manner within the context of Internet Exchange Point deployments.
+				<br>
+				Building on the general framework for BGP Large Community usage described in <xref target="RFC8195" />, this document refines and extends those recommendations for the specific case of IXPs and their Route Server infrastructures. It defines a set of Large Community conventions intended to facilitate common operational practices, simplify policy coordination between IXP operators and participants, and promote interoperable implementations across different networks and geographic regions.
             </t>
           <section title="Justification">
-            <t> Networks operating in the DFZ commonly exchange routing information across multiple IXPs to increase path diversity, improve resiliency, and optimize traffic locality. In addition to the traditional population of IXP participants, an increasing number of enterprise networks are establishing peering sessions at exchange points, thereby introducing additional operational and policy considerations. To ensure consistent behavior across IXPs and geographic regions, a standardized set of BGP Large Communities is required to provide uniform signaling semantics and interoperable operational practices.
+            <t> 
+				Networks operating in the Default-Free Zone (DFZ) commonly exchange routing information across multiple Internet Exchange Points (IXPs) to increase path diversity, enhance resiliency, and optimize traffic locality and performance. In addition to the traditional population of IXP participants (such as large transit providers, content providers, and access networks), an increasing number of enterprise networks are establishing peering sessions at exchange points. This diversification of participants introduces additional operational and policy considerations, for example, in routing policy expression, traffic engineering, and incident response.
+				<br>
+				As networks interconnect at multiple IXPs and across different geographic regions, the lack of consistent policy signaling can lead to misinterpretation of routing intentions, operational complexity, and sub‑optimal routing behavior. To mitigate these issues and to ensure predictable behavior across IXPs and regions, a standardized set of BGP Large Communities is needed. Such a common framework provides uniform signaling semantics, reduces ambiguity in policy interpretation, and enables interoperable operational practices among IXP operators and their participants.
             </t>
           </section>
         </section>
         <section title="Suggested Large BGP Community Standard List">
-            <t> This document defines a proposed standard for the use of BGP Large Communities in IXP operational environments. The initial version of this specification was published on the Euro‑IX website <xref target="EURO-IX" />. Under this scheme, the first octet of the BGP Large Community value is used to encode the Autonomous System (AS) number of the operator’s Route Servers. The second and third octets are structured as described in the following sub‑sections. 
+            <t> 
+				This document defines a proposed standard for the use of BGP Large Communities in IXPs operational environments. The intent is to provide a common, interoperable set of policy signaling conventions for IXP operators and participants to simplify configuration, reduce ambiguity, and promote consistent behavior across IXPs and deployments.
+				<br>
+				The initial version of this specification was published on the Euro‑IX website <xref target="EURO-IX" /> and has been further refined based on operational feedback from IXP operators and members. Under the scheme described in this document, the first octet of the BGP Large Community value is used to encode the Autonomous System (AS) number of the operator’s Route Servers. The second and third octets are then used to carry function- and policy-specific information, and are structured as described in the following sub‑sections.
             </t>
             <section title="Operational Large BGP Communities">
-            <t>For operational reasons and to signal key functionalities to the IXP Route Servers, the range of 0-999 of the second octet is reserved. In the tables below we provide a better clarification of the usage of this range.
+            <t>
+				For operational reasons, and to signal key functions to the IXP Route Servers, the range 0–999 of the second octet is reserved. The following tables provide a more detailed description of how this range is structured and how the individual values are intended to be used in practice.
             </t>
-            <t>The operational BGP Large communities MUST be removed from the IXP operator when the prefixes are being announced to the IXP members or BGP peers.  
+            <t>
+				Operational BGP Large Communities MUST be removed by the IXP operator before the associated prefixes are advertised to IXP members or other BGP peers.
             </t>
                 <texttable anchor="table_direct" title="Direct filtering RS:0-99:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
@@ -184,9 +178,11 @@
                 </texttable>
 		</section>
                 <section title="Informational Large BGP Communities">
-            	<t>For informational reasons and to signal key functionalities to the IXP Route Servers, the range of 1000-1999 of the second octet is reserved. In the tables below we provide a better clarification of the usage of this range.
+            	<t>
+					For informational purposes, and to signal key functions to the IXP Route Servers, the range 1000–1999 of the second octet is reserved. The following tables provide a more detailed description of how this range is structured and how the individual values are intended to be used in practice.
             	</t>
-            <t>The informational BGP Large communities MAY be removed from the IXP operator when the prefixes are being announced to the IXP members or BGP peers. The standard proposes detailed recommendations for each Large community in the tables below.
+            <t>
+				Informational BGP Large Communities MAY be removed by the IXP operator before the associated prefixes are advertised to IXP members or other BGP peers. This specification also provides detailed, per-community recommendations for their use, as described in the tables below.
             </t>
                <texttable anchor="table_informationaltags" title="Informational tags RS:1000-1099:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
@@ -261,7 +257,7 @@
             </section>
        <section title="Security Considerations">
            <t>
-		Operators should note the recommendations in Section 11 of BGP Operations and Security <xref target="RFC7454"/> and handle BGP Large Communities with their ASN in the Global Administrator field in a similar manner.
+				Operators should note the recommendations in Section 11 of BGP Operations and Security <xref target="RFC7454"/> and handle BGP Large Communities with their ASN in the Global Administrator field in a similar manner.
             </t>
         </section>
 
@@ -272,7 +268,7 @@
 
         <section title="Acknowledgments">
             <t>
-		The authors would like to thank Stefan Plug (Strato), Colby Barth (Juniper Networks) and Bijal Sanghani (EURO-IX) for their support, insightful review, and comments.
+				The authors would like to thank Stefan Plug (Strato), Christoph Dietzel (DE-CIX), Colby Barth (Juniper Networks), and Bijal Sanghani (EURO-IX) for their support, insightful reviews, and valuable comments.
             </t>
         </section>
 
