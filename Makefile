@@ -10,7 +10,7 @@ all:
 	echo "Dir exists, not creating it"; \
 	else mkdir ${DRAFTNAME}; \
 	fi
-	xml2rfc ${SOURCENAME} -b ${DRAFTNAME} --raw --text --html
+	xml2rfc ${SOURCENAME} -b ${DRAFTNAME} --text --html
 
 text:
 	xml2rfc ${SOURCENAME} -b ${DRAFTNAME} --raw
