@@ -94,13 +94,13 @@
         <section title="Introduction">
             <t>
 				This document presents operational suggestions for the application of BGP Large Communities <xref target="RFC8092" /> by IXP operators and IXP members using the BGP protocol as specified in <xref target="RFC4271" />. The goal is to provide guidance on how to encode and interpret policy signals in a consistent manner within the context of Internet Exchange Point deployments.
-				<br>
+				<br/>
 				Building on the general framework for BGP Large Community usage described in <xref target="RFC8195" />, this document refines and extends those recommendations for the specific case of IXPs and their Route Server infrastructures. It defines a set of Large Community conventions intended to facilitate common operational practices, simplify policy coordination between IXP operators and participants, and promote interoperable implementations across different networks and geographic regions.
             </t>
           <section title="Justification">
             <t> 
 				Networks operating in the Default-Free Zone (DFZ) commonly exchange routing information across multiple Internet Exchange Points (IXPs) to increase path diversity, enhance resiliency, and optimize traffic locality and performance. In addition to the traditional population of IXP participants (such as large transit providers, content providers, and access networks), an increasing number of enterprise networks are establishing peering sessions at exchange points. This diversification of participants introduces additional operational and policy considerations, for example, in routing policy expression, traffic engineering, and incident response.
-				<br>
+				<br/>
 				As networks interconnect at multiple IXPs and across different geographic regions, the lack of consistent policy signaling can lead to misinterpretation of routing intentions, operational complexity, and sub‑optimal routing behavior. To mitigate these issues and to ensure predictable behavior across IXPs and regions, a standardized set of BGP Large Communities is needed. Such a common framework provides uniform signaling semantics, reduces ambiguity in policy interpretation, and enables interoperable operational practices among IXP operators and their participants.
             </t>
           </section>
@@ -108,7 +108,7 @@
         <section title="Suggested Large BGP Community Standard List">
             <t> 
 				This document defines a proposed standard for the use of BGP Large Communities in IXPs operational environments. The intent is to provide a common, interoperable set of policy signaling conventions for IXP operators and participants to simplify configuration, reduce ambiguity, and promote consistent behavior across IXPs and deployments.
-				<br>
+				<br/>
 				The initial version of this specification was published on the Euro‑IX website <xref target="EURO-IX" /> and has been further refined based on operational feedback from IXP operators and members. Under the scheme described in this document, the first octet of the BGP Large Community value is used to encode the Autonomous System (AS) number of the operator’s Route Servers. The second and third octets are then used to carry function- and policy-specific information, and are structured as described in the following sub‑sections.
             </t>
             <section title="Operational Large BGP Communities">
