@@ -255,12 +255,32 @@
                 </texttable>
                </section>
             </section>
+	   <section title="Priorities">
+		   <t>
+			   The priority value is an integer that determines the evaluation order in the route server configuration, where 0 represents the highest priority. For example, a NO-EXPORT community (RS:0:PEERAS) has priority 0. If an export community (RS:1:PEERAS) with priority 1 is also present, the NO-EXPORT community MUST be evaluated before the export community.
+           </t>
+        </section>
+		
+		<section title="Unassigned and IXP-Specific Reserved Communities">
+			<t>
+				The following community ranges are reserved for operator- and IXP-specific use and are therefore not defined by this document:<br/>
+				Unassigned: RS:1200-1899:*<br/>
+				IXP-Specific: RS:1900-1999:*<br/>
+				These communities are intended for internal use by route server operators, IXPs, or participating networks. Their semantics, if any, are to be defined by the relevant IXP or operator and are outside the scope of this document.
+				<br/>
+				Within these ranges, operators and IXPs MAY define and use communities for informational or policy-signalling purposes. Such communities:<br/>
+				MUST NOT be assumed to have any common or standardized meaning across different IXPs or deployments.</br>
+				SHOULD NOT be relied upon by third parties that do not have an explicit agreement or documentation from the defining operator or IXP.<br/>
+				This document does not specify, standardize, or register any individual values within these ranges. They are provided solely as free-to-use informational community spaces for local policy and operational practices.<br/>
+		    </t>
+       </section>
+		
        <section title="Security Considerations">
            <t>
 				Operators should note the recommendations in Section 11 of BGP Operations and Security <xref target="RFC7454"/> and handle BGP Large Communities with their ASN in the Global Administrator field in a similar manner.
             </t>
         </section>
-
+		
         <section title="IANA Considerations">
             <t>
             </t>
