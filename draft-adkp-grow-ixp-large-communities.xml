@@ -269,7 +269,7 @@
 				These communities are intended for internal use by route server operators, IXPs, or participating networks. Their semantics, if any, are to be defined by the relevant IXP or operator and are outside the scope of this document.
 				<br/>
 				Within these ranges, operators and IXPs MAY define and use communities for informational or policy-signalling purposes. Such communities:<br/>
-				MUST NOT be assumed to have any common or standardized meaning across different IXPs or deployments.</br>
+				MUST NOT be assumed to have any common or standardized meaning across different IXPs or deployments.<br/>
 				SHOULD NOT be relied upon by third parties that do not have an explicit agreement or documentation from the defining operator or IXP.<br/>
 				This document does not specify, standardize, or register any individual values within these ranges. They are provided solely as free-to-use informational community spaces for local policy and operational practices.<br/>
 		    </t>
