@@ -22,7 +22,7 @@
 
 <rfc category="info"
     ipr="trust200902"
-    docName="draft-adkp-grow-ixpcommunities-01"
+    docName="draft-adkp-ixp-large-communities-01"
     updates="7947,7948,8195"
     submissionType="IETF">
 
@@ -71,8 +71,6 @@
         </author>
 
         <date />
-        <area>Routing</area>
-        <workgroup>Global Routing Operations</workgroup>
 
         <keyword>BGP</keyword>
 	<keyword>Community</keyword>
