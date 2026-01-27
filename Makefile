@@ -1,5 +1,5 @@
 
-BASENAME=draft-adkp-grow-ixp-large-communities
+BASENAME=draft-adkp-ixp-large-communities
 EXT=.xml
 VERSION=01
 SOURCENAME=${BASENAME}${EXT}
