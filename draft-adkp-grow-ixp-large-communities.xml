@@ -207,74 +207,63 @@
                     <c>RS:1005:1</c><c>AS Object, Route Object and Organization NOT from the same region</c><c>Meant as a transitioning mechanism until full RPKI deployment</c><c>yes</c>
                     <c>RS:1005:2</c><c>AS Object, Route Object and Organization from within the same region</c><c></c><c>yes</c>
                     <c>RS:1005:3</c><c>AS Object, Route Object and Organization from within the same region Not checked</c><c></c><c>yes</c>
-                </texttable>
-                <texttable anchor="table_filtered-on-import" title="Informational RS:1000-1999:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <c>RS:1101:1</c><c>Prefix length too long</c><c></c><c></c>
-                    <c>RS:1101:2</c><c>Prefix length too short</c><c></c><c></c>
-                    <c>RS:1101:3</c><c>Bogon Prefix</c><c></c><c></c>
-                    <c>RS:1101:4</c><c>Bogon AS</c><c></c><c></c>
-                    <c>RS:1101:5</c><c>AS path too long</c><c></c><c></c>
-                    <c>RS:1101:6</c><c>AS path too short</c><c></c><c></c>
-                    <c>RS:1101:7</c><c>as-path.first != peeras</c><c></c><c></c>
-                    <c>RS:1101:8</c><c>next hop IP != peer IP</c><c></c><c></c>
-                    <c>RS:1101:9</c><c>IRRDB Prefix not found in AS-SET or aut-num</c><c>Prefix was not found in the peer's as-set</c><c></c>
-                    <c>RS:1101:10</c><c>Origin AS not in peer AS-SET</c><c></c><c></c>
-                    <c>RS:1101:11</c><c>Prefix not found in origin AS</c><c></c><c></c>
-                    <c>RS:1101:12</c><c>Prefix is RPKI UNKNOWN</c><c></c><c></c>
-                    <c>RS:1101:13</c><c>Prefix is RPKI INVALID</c><c></c><c></c>
-                    <c>RS:1101:14</c><c>Transit-free ASN in AS-Path</c><c></c><c></c>
-                    <c>RS:1101:15</c><c>Too many BGP communities set on prefix</c><c></c><c></c>
-                </texttable>
-                <texttable anchor="table_filtered-on-export" title="Route was filtered on export RS:1102:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <c>RS:1102:1</c><c>Advertising peer declines prefix</c><c>Advertising peer does not want you to receive prefix</c><c></c>
-                    <c>RS:1102:2</c><c>You declined prefix from advertising peer</c><c>You do not want to receive prefix from advertising peer</c><c></c>
-                    <c>RS:1102:3</c><c>Maximum number of BGP communities exceeded</c><c></c><c></c>
-                </texttable>
-                <texttable anchor="table_unassigned-1200-1899" title="Unassigned RS:1200-1899:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <c></c><c></c><c></c><c></c>
-                </texttable>
-               <texttable anchor="table_ixp-specific" title="IXP Specific RS:1900-1999:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <c></c><c></c><c></c><c></c>
-		    <postamble>Free to use informational communities</postamble>
-                </texttable>
-               </section>
-            </section>
-	   <section title="Priorities">
+									</texttable>
+									<texttable anchor="table_filtered-on-import" title="Informational RS:1000-1999:*" style="all">
+										<ttcol align="center" width="20%">Range</ttcol>
+										<ttcol align="center">Description</ttcol>
+										<ttcol align="center">Notes</ttcol>
+										<ttcol align="center">Strip on export</ttcol>
+										<c>RS:1101:1</c><c>Prefix length too long</c><c></c><c></c>
+										<c>RS:1101:2</c><c>Prefix length too short</c><c></c><c></c>
+										<c>RS:1101:3</c><c>Bogon Prefix</c><c></c><c></c>
+										<c>RS:1101:4</c><c>Bogon AS</c><c></c><c></c>
+										<c>RS:1101:5</c><c>AS path too long</c><c></c><c></c>
+										<c>RS:1101:6</c><c>AS path too short</c><c></c><c></c>
+										<c>RS:1101:7</c><c>as-path.first != peeras</c><c></c><c></c>
+										<c>RS:1101:8</c><c>next hop IP != peer IP</c><c></c><c></c>
+										<c>RS:1101:9</c><c>IRRDB Prefix not found in AS-SET or aut-num</c><c>Prefix was not found in the peer's as-set</c><c></c>
+										<c>RS:1101:10</c><c>Origin AS not in peer AS-SET</c><c></c><c></c>
+										<c>RS:1101:11</c><c>Prefix not found in origin AS</c><c></c><c></c>
+										<c>RS:1101:12</c><c>Prefix is RPKI UNKNOWN</c><c></c><c></c>
+										<c>RS:1101:13</c><c>Prefix is RPKI INVALID</c><c></c><c></c>
+										<c>RS:1101:14</c><c>Transit-free ASN in AS-Path</c><c></c><c></c>
+										<c>RS:1101:15</c><c>Too many BGP communities set on prefix</c><c></c><c></c>
+									</texttable>
+									<texttable anchor="table_filtered-on-export" title="Route was filtered on export RS:1102:*" style="all">
+										<ttcol align="center" width="20%">Range</ttcol>
+										<ttcol align="center">Description</ttcol>
+										<ttcol align="center">Notes</ttcol>
+										<ttcol align="center">Strip on export</ttcol>
+										<c>RS:1102:1</c><c>Advertising peer declines prefix</c><c>Advertising peer does not want you to receive prefix</c><c></c>
+										<c>RS:1102:2</c><c>You declined prefix from advertising peer</c><c>You do not want to receive prefix from advertising peer</c><c></c>
+										<c>RS:1102:3</c><c>Maximum number of BGP communities exceeded</c><c></c><c></c>
+									</texttable>
+								</section>
+							</section>
+
+
+		<section title="Unassigned and IXP-Specific Reserved Communities">
+			<t>
+				The following community ranges are reserved for operator- and IXP-specific use and are therefore not defined by this document:
+				<ul>
+					<li>Unassigned: RS:1200-1899:*</li>
+					<li>IXP-Specific: RS:1900-1999:*</li>
+				</ul>
+				These communities are intended for internal use by route server operators, IXPs, or participating networks. Their semantics, if any, are to be defined by the relevant IXP or operator and are outside the scope of this document.
+				<br/>
+				Within these ranges, operators and IXPs MAY define and use communities for informational or policy-signalling purposes. Such communities:
+				<ul>
+					<li>MUST NOT be assumed to have any common or standardized meaning across different IXPs or deployments;</li>
+					<li>SHOULD NOT be relied upon by third parties that do not have an explicit agreement or documentation from the defining operator or IXP.</li>
+				</ul>
+				This document does not specify, standardize, or register any individual values within these ranges. They are provided solely as free-to-use informational community spaces for local policy and operational practices.
+		    </t>
+       </section>
+		   <section title="Priorities">
 		   <t>
 			   The priority value is an integer that determines the evaluation order in the route server configuration, where 0 represents the highest priority. For example, a NO-EXPORT community (RS:0:PEERAS) has priority 0. If an export community (RS:1:PEERAS) with priority 1 is also present, the NO-EXPORT community MUST be evaluated before the export community.
            </t>
-        </section>
-		
-		<section title="Unassigned and IXP-Specific Reserved Communities">
-			<t>
-				The following community ranges are reserved for operator- and IXP-specific use and are therefore not defined by this document:<br/>
-				Unassigned: RS:1200-1899:*<br/>
-				IXP-Specific: RS:1900-1999:*<br/>
-				These communities are intended for internal use by route server operators, IXPs, or participating networks. Their semantics, if any, are to be defined by the relevant IXP or operator and are outside the scope of this document.
-				<br/>
-				Within these ranges, operators and IXPs MAY define and use communities for informational or policy-signalling purposes. Such communities:<br/>
-				MUST NOT be assumed to have any common or standardized meaning across different IXPs or deployments.<br/>
-				SHOULD NOT be relied upon by third parties that do not have an explicit agreement or documentation from the defining operator or IXP.<br/>
-				This document does not specify, standardize, or register any individual values within these ranges. They are provided solely as free-to-use informational community spaces for local policy and operational practices.<br/>
-		    </t>
-       </section>
-		
+        </section>	
        <section title="Security Considerations">
            <t>
 				Operators should note the recommendations in Section 11 of BGP Operations and Security <xref target="RFC7454"/> and handle BGP Large Communities with their ASN in the Global Administrator field in a similar manner.
