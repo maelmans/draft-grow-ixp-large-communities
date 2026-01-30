@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!ENTITY RFC2234 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2234.xml">
-<!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
-<!ENTITY RFC4234 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4234.xml">
-<!ENTITY nbsp    "&#160;">
-]>
+        <!ENTITY RFC2234 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2234.xml">
+        <!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
+        <!ENTITY RFC4234 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4234.xml">
+        <!ENTITY nbsp    "&#160;">
+        ]>
 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 
@@ -21,15 +21,15 @@
 <?rfc subcompact="no" ?>
 
 <rfc category="info"
-    ipr="trust200902"
-    docName="draft-adkp-ixp-large-communities-01"
-    updates="7947,7948,8195"
-    submissionType="IETF">
+     ipr="trust200902"
+     docName="draft-adkp-ixp-large-communities-01"
+     updates="7947,7948,8195"
+     submissionType="IETF">
 
     <front>
 
         <title abbrev="BGP Large Communities at IXP Route Servers">
-		BGP Large Communities applications for IXP Route Servers
+            BGP Large Communities applications for IXP Route Servers
         </title>
 
         <author fullname="Melchior Aelmans" initials="M.D.F." surname="Aelmans">
@@ -57,8 +57,8 @@
                 <email>stavros.konstantaras@ams-ix.net</email>
             </address>
         </author>
-				
-		<author fullname="Massimiliano Stucchi" initials="M" surname="Stucchi">
+
+        <author fullname="Massimiliano Stucchi" initials="M" surname="Stucchi">
             <organization>Glevia GmbH</organization>
 
             <address>
@@ -70,220 +70,442 @@
             </address>
         </author>
 
-        <date />
+        <date/>
 
         <keyword>BGP</keyword>
-	<keyword>Community</keyword>
-	<keyword>Internet Exchange Point</keyword>
+        <keyword>Community</keyword>
+        <keyword>Internet Exchange Point</keyword>
 
         <abstract>
             <t>
-                This document presents suggestions and examples for the application of BGP Large Communities <xref target="RFC8092" /> at Internet Exchange Points (IXPs). Suggestions are based on operational experiences from IXP operators and members.
-		Any IXP operator or IXP member can consider using these communities. The document specifically focuses on Route Server <xref target="RFC7947" /> deployments in IXP context <xref target="RFC7948" />.
+                This document presents suggestions and examples for the application of BGP Large Communities
+                <xref target="RFC8092"/>
+                at Internet Exchange Points (IXPs). Suggestions are based on operational experiences from IXP operators
+                and members.
+                Any IXP operator or IXP member can consider using these communities. The document specifically focuses
+                on Route Server
+                <xref target="RFC7947"/>
+                deployments in IXP context<xref target="RFC7948"/>.
             </t>
         </abstract>
         <note title="Requirements Language">
             <t>
-                The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.
+                The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT",
+                "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as
+                described in BCP 14
+                <xref target="RFC2119"/>
+                <xref target="RFC8174"/>
+                when, and only when, they appear in all capitals, as shown here.
             </t>
         </note>
     </front>
     <middle>
         <section title="Introduction">
             <t>
-				This document presents operational suggestions for the application of BGP Large Communities <xref target="RFC8092" /> by IXP operators and IXP members using the BGP protocol as specified in <xref target="RFC4271" />. The goal is to provide guidance on how to encode and interpret policy signals in a consistent manner within the context of Internet Exchange Point deployments.
-				<br/>
-				Building on the general framework for BGP Large Community usage described in <xref target="RFC8195" />, this document refines and extends those recommendations for the specific case of IXPs and their Route Server infrastructures. It defines a set of Large Community conventions intended to facilitate common operational practices, simplify policy coordination between IXP operators and participants, and promote interoperable implementations across different networks and geographic regions.
+                This document presents operational suggestions for the application of BGP Large Communities
+                <xref target="RFC8092"/>
+                by IXP operators and IXP members using the BGP protocol as specified in<xref target="RFC4271"/>. The
+                goal is to provide guidance on how to encode and interpret policy signals in a consistent manner within
+                the context of Internet Exchange Point deployments.
+                <br/>
+                Building on the general framework for BGP Large Community usage described in<xref target="RFC8195"/>,
+                this document refines and extends those recommendations for the specific case of IXPs and their Route
+                Server infrastructures. It defines a set of Large Community conventions intended to facilitate common
+                operational practices, simplify policy coordination between IXP operators and participants, and promote
+                interoperable implementations across different networks and geographic regions.
+                <br/>
+                The initial version of this specification was published on the Euro‑IX website
+                <xref target="EURO-IX"/>
+                and has been further refined based on operational feedback from IXP operators and members. Under the
+                scheme described in this document, the first octet of the BGP Large Community value is used to encode
+                the Autonomous System (AS) number of the operator’s Route Servers. The second and third octets are then
+                used to carry function- and policy-specific information, and are structured as described in the
+                following sub‑sections.
             </t>
-          <section title="Justification">
-            <t> 
-				Networks operating in the Default-Free Zone (DFZ) commonly exchange routing information across multiple Internet Exchange Points (IXPs) to increase path diversity, enhance resiliency, and optimize traffic locality and performance. In addition to the traditional population of IXP participants (such as large transit providers, content providers, and access networks), an increasing number of enterprise networks are establishing peering sessions at exchange points. This diversification of participants introduces additional operational and policy considerations, for example, in routing policy expression, traffic engineering, and incident response.
-				<br/>
-				As networks interconnect at multiple IXPs and across different geographic regions, the lack of consistent policy signaling can lead to misinterpretation of routing intentions, operational complexity, and sub‑optimal routing behavior. To mitigate these issues and to ensure predictable behavior across IXPs and regions, a standardized set of BGP Large Communities is needed. Such a common framework provides uniform signaling semantics, reduces ambiguity in policy interpretation, and enables interoperable operational practices among IXP operators and their participants.
-            </t>
-          </section>
+            <section title="Justification">
+                <t>
+                    Networks operating in the Default-Free Zone (DFZ) commonly exchange routing information across
+                    multiple Internet Exchange Points (IXPs) to increase path diversity, enhance resiliency, and
+                    optimize traffic locality and performance. In addition to the traditional population of IXP
+                    participants (such as large transit providers, content providers, and access networks), an
+                    increasing number of enterprise networks are establishing peering sessions at exchange points. This
+                    diversification of participants introduces additional operational and policy considerations, for
+                    example, in routing policy expression, traffic engineering, and incident response.
+                    <br/>
+                    As networks interconnect at multiple IXPs and across different geographic regions, the lack of
+                    consistent policy signaling can lead to misinterpretation of routing intentions, operational
+                    complexity, and sub‑optimal routing behavior. To mitigate these issues and to ensure predictable
+                    behavior across IXPs and regions, a standardized set of BGP Large Communities is needed. Such a
+                    common framework provides uniform signaling semantics, reduces ambiguity in policy interpretation,
+                    and enables interoperable operational practices among IXP operators and their participants.
+                </t>
+            </section>
         </section>
         <section title="Suggested Large BGP Community Standard List">
-            <t> 
-				This document defines a proposed standard for the use of BGP Large Communities in IXPs operational environments. The intent is to provide a common, interoperable set of policy signaling conventions for IXP operators and participants to simplify configuration, reduce ambiguity, and promote consistent behavior across IXPs and deployments.
-				<br/>
-				The initial version of this specification was published on the Euro‑IX website <xref target="EURO-IX" /> and has been further refined based on operational feedback from IXP operators and members. Under the scheme described in this document, the first octet of the BGP Large Community value is used to encode the Autonomous System (AS) number of the operator’s Route Servers. The second and third octets are then used to carry function- and policy-specific information, and are structured as described in the following sub‑sections.
+            <t>
+                This document defines a proposed standard for the use of BGP Large Communities in IXPs operational
+                environments. The intent is to provide a common, interoperable set of policy signaling conventions for
+                IXP operators and participants to simplify configuration, reduce ambiguity, and promote consistent
+                behavior across IXPs and deployments.
+                <br/>
+                We classify the BGP Large communities in two main categories: the Operational communities and the
+                Informational ones. The later ones are classified further into two sub-categories: IRR_RPKI
+                Informational communities and Filtered Informational communities.
             </t>
             <section title="Operational Large BGP Communities">
+                <t>
+                    For operational reasons, and to signal key functions to the IXP Route Servers, the range 0–999 of
+                    the second octet is reserved. The following tables provide a more detailed description of how this
+                    range is structured and how the individual values are intended to be used in practice.
+                </t>
+                <t>
+                    Operational BGP Large Communities MUST be removed by the IXP operator before the associated prefixes
+                    are advertised to IXP members or other BGP peers.
+                </t>
+                <section title="Direct Filtering Operational Communities ">
+                    <texttable anchor="table_direct" title="Direct filtering RS:0-99:*" style="all">
+                        <ttcol align="center" width="20%">Range</ttcol>
+                        <ttcol align="center">Description</ttcol>
+                        <ttcol align="center">Notes</ttcol>
+                        <ttcol align="center">Strip on export</ttcol>
+                        <ttcol align="center">Priority</ttcol>
+                        <c>RS:0:PEERAS</c>
+                        <c>Do not advertise to PEERAS</c>
+                        <c></c>
+                        <c>yes</c>
+                        <c>0</c>
+                        <c>RS:1:PEERAS</c>
+                        <c>Advertise to PEERAS</c>
+                        <c>Only useful in combination with RS:0:0</c>
+                        <c>yes</c>
+                        <c>1</c>
+                        <c>RS:2:ms</c>
+                        <c>Do not announce to peers higher than ms</c>
+                        <c>ms = Latency of peer in ms</c>
+                        <c>yes</c>
+                        <c>2</c>
+                    </texttable>
+                </section>
+                <section title="AS PATH prepending Operational Communities">
+                    <texttable anchor="table_prepend" title="AS Path prepending RS:100-199:*" style="all">
+                        <ttcol align="center" width="20%">Range</ttcol>
+                        <ttcol align="center">Description</ttcol>
+                        <ttcol align="center">Notes</ttcol>
+                        <ttcol align="center">Strip on export</ttcol>
+                        <ttcol align="center">Priority</ttcol>
+                        <c>RS:101:PEERAS</c>
+                        <c>Prepend to PEERAS once</c>
+                        <c></c>
+                        <c>yes</c>
+                        <c>3</c>
+                        <c>RS:102:PEERAS</c>
+                        <c>Prepend to PEERAS twice</c>
+                        <c></c>
+                        <c>yes</c>
+                        <c>3</c>
+                        <c>RS:103:PEERAS</c>
+                        <c>Prepend to PEERAS three times</c>
+                        <c></c>
+                        <c>yes</c>
+                        <c>3</c>
+                        <c>RS:111:ms</c>
+                        <c>Prepend once to peers higher than ms</c>
+                        <c></c>
+                        <c>yes</c>
+                        <c>3</c>
+                        <c>RS:112:ms</c>
+                        <c>Prepend twice to peers higher than ms</c>
+                        <c></c>
+                        <c>yes</c>
+                        <c>3</c>
+                        <c>RS:113:ms</c>
+                        <c>Prepend three to peers higher than ms</c>
+                        <c></c>
+                        <c>yes</c>
+                        <c>3</c>
+                    </texttable>
+                    <!--                <texttable anchor="table_unassigned_1" title="Unassigned RS:200-665:*" style="all">
+                                        <ttcol align="center" width="20%">Range</ttcol>
+                                        <ttcol align="center">Description</ttcol>
+                                        <ttcol align="center">Notes</ttcol>
+                                        <ttcol align="center">Strip on export</ttcol>
+                                        <ttcol align="center">Priority</ttcol>
+                                        <c></c><c></c><c></c><c></c><c></c>
+                                    </texttable> -->
+                </section>
+                <section title="Blachkole Operational Communities">
+                    <texttable anchor="table_rtbh" title="BLACKHOLE Communities RS:666:*" style="all">
+                        <ttcol align="center" width="20%">Range</ttcol>
+                        <ttcol align="center">Description</ttcol>
+                        <ttcol align="center">Notes</ttcol>
+                        <ttcol align="center">Strip on export</ttcol>
+                        <ttcol align="center">Priority</ttcol>
+                        <c>RS:666:0</c>
+                        <c>BLACKHOLE Community</c>
+                        <c>Community to signal Remote Triggered Blackholing</c>
+                        <c>yes</c>
+                        <c>3</c>
+                        <c></c>
+                        <c></c>
+                        <c></c>
+                        <c></c>
+                        <c></c>
+                    </texttable>
+
+                    <!--                <texttable anchor="table_unassigned_2" title="Unassigned RS:667-899:*" style="all">
+                                        <ttcol align="center" width="20%">Range</ttcol>
+                                        <ttcol align="center">Description</ttcol>
+                                        <ttcol align="center">Notes</ttcol>
+                                        <ttcol align="center">Strip on export</ttcol>
+                                        <ttcol align="center">Priority</ttcol>
+                                        <c></c><c></c><c></c><c></c><c></c>
+                                    </texttable> -->
+                    <!--                <texttable anchor="table_ixp_specific" title="IXP Specific RS:900-999:*" style="all">
+                                        <ttcol align="center" width="20%">Range</ttcol>
+                                        <ttcol align="center">Description</ttcol>
+                                        <ttcol align="center">Notes</ttcol>
+                                        <ttcol align="center">Strip on export</ttcol>
+                                        <ttcol align="center">Priority</ttcol>
+                                        <c></c><c></c><c></c><c></c><c></c>
+                                   </texttable> -->
+                </section>
+            </section>
+            <section title="Informational IRR_RPKI Large BGP Communities">
+                <t>
+                    For informational purposes, the range 1000–1999 of the second octet is reserved. The following
+                    tables provide a more detailed description of how this range is structured and how the individual
+                    values are intended to be used in practice.
+                </t>
+                <t>
+                    Informational BGP Large Communities MAY be removed by the IXP operator before the associated
+                    prefixes are advertised to IXP members or other BGP peers. This specification also provides
+                    detailed, per-community recommendations for their use, as described in the tables below.
+                </t>
+                <texttable anchor="table_informationalirrtags" title="Informational IRR_RPKI tags RS:1000-1099:*"
+                           style="all">
+                    <ttcol align="center" width="20%">Range</ttcol>
+                    <ttcol align="center">Description</ttcol>
+                    <ttcol align="center">Notes</ttcol>
+                    <ttcol align="center">Strip on import</ttcol>
+                    <c>RS:1000:1</c>
+                    <c>RPKI VALID</c>
+                    <c>Prefix is RPKI VALID</c>
+                    <c>yes</c>
+                    <c>RS:1000:2</c>
+                    <c>RPKI UNKNOWN</c>
+                    <c>Prefix is RPKI UNKNOWN</c>
+                    <c>yes</c>
+                    <c>RS:1000:3</c>
+                    <c>RPKI NOT CHECKED</c>
+                    <c>Prefix was not RPKI checked</c>
+                    <c>yes</c>
+                    <c>RS:1000:4</c>
+                    <c>RPKI INVALID No reason specified</c>
+                    <c>Prefix is RPKI invalid, but no reason was given</c>
+                    <c>yes</c>
+                    <c>RS:1000:5</c>
+                    <c>RPKI INVALID Origin AS is invalid</c>
+                    <c>Prefix is RPKI invalid because the origin AS is invalid</c>
+                    <c>yes</c>
+                    <c>RS:1000:6</c>
+                    <c>RPKI INVALID Max-length is invalid</c>
+                    <c>Prefix is RPKI invalid because the Max-length is invalid</c>
+                    <c>yes</c>
+                    <c>RS:1001:1</c>
+                    <c>IRRDB VALID</c>
+                    <c>Prefix exists in IRRDB</c>
+                    <c>yes</c>
+                    <c>RS:1001:2</c>
+                    <c>IRRDB NOT CHECKED</c>
+                    <c>Prefix was not checked in IRRDB</c>
+                    <c>yes</c>
+                    <c>RS:1001:3</c>
+                    <c>MORE SPECIFIC THAN IRRDB</c>
+                    <c>Prefix does not exist in IRRDB, but a less specific prefix valid entry does exists</c>
+                    <c>yes</c>
+                    <c>RS:1001:4</c>
+                    <c>IRRDB Prefix not found in AS-SET or aut-num</c>
+                    <c>Prefix was not found in the peer's as-set</c>
+                    <c>yes</c>
+                    <c>RS:1001:5</c>
+                    <c>IRRDB INVALID ORIGIN AS</c>
+                    <c>Origin AS not in peer AS-SET</c>
+                    <c>yes</c>
+                    <c>RS:1001:6</c>
+                    <c>IRRDB INVALID PREFIX FOR ORIGIN AS</c>
+                    <c>Prefix not found in origin AS</c>
+                    <c>yes</c>
+                    <c>RS:1002:1-*</c>
+                    <c>TRACER (RS #)</c>
+                    <c>IXP assigned ID for route server instance</c>
+                    <c>no</c>
+                    <c>RS:1003:ms</c>
+                    <c>Measured RTT for advertising peer</c>
+                    <c>IXP measured round trip time for peer in ms</c>
+                    <c>yes</c>
+                    <c>RS:1004:$peerAS</c>
+                    <c>Incoming Peer AS</c>
+                    <c>Use Autonomous System Number of the incoming member for that route</c>
+                    <c>yes</c>
+                    <c>RS:1005:1</c>
+                    <c>AS Object, Route Object and Organization NOT from the same region</c>
+                    <c>Meant as a transitioning mechanism until full RPKI deployment</c>
+                    <c>yes</c>
+                    <c>RS:1005:2</c>
+                    <c>AS Object, Route Object and Organization from within the same region</c>
+                    <c></c>
+                    <c>yes</c>
+                    <c>RS:1005:3</c>
+                    <c>AS Object, Route Object and Organization from within the same region Not checked</c>
+                    <c></c>
+                    <c>yes</c>
+                </texttable>
+            </section>
+            <section title="Informational Filtered Large BGP Communities">
+                <t>
+                    Prefixes which carry these communities, are not expected to be advertised to anyone by the IXP's Route
+                    Servers as a result of filtering actions.
+                    However, it may still be useful to tag an incoming filtered route in order to project the
+                    reasoning to a Looking Glass. For IXP network engineers, is useful to have those BGP community tags
+                    to be present for troubleshooting reasons as most of the BGP speakers can present to the user's CLI
+                    the routes that have been filtered.
+                </t>
+                <section title="Routes filtered on Inbound direction">
+                <texttable anchor="table_filtered-on-import" title="Informational Filtered tags RS:1000-1999:*"
+                           style="all">
+                    <ttcol align="center" width="20%">Range</ttcol>
+                    <ttcol align="center" width="40%">Description</ttcol>
+                    <ttcol align="center" width="40%">Notes</ttcol>
+                    <c>RS:1101:1</c>
+                    <c>Prefix length too long</c>
+                    <c></c>
+                    <c>RS:1101:2</c>
+                    <c>Prefix length too short</c>
+                    <c></c>
+                    <c>RS:1101:3</c>
+                    <c>Bogon Prefix</c>
+                    <c></c>
+                    <c>RS:1101:4</c>
+                    <c>Bogon AS</c>
+                    <c></c>
+                    <c>RS:1101:5</c>
+                    <c>AS path too long</c>
+                    <c></c>
+                    <c>RS:1101:6</c>
+                    <c>AS path too short</c>
+                    <c></c>
+                    <c>RS:1101:7</c>
+                    <c>as-path.first != peeras</c>
+                    <c></c>
+                    <c>RS:1101:8</c>
+                    <c>next hop IP != peer IP</c>
+                    <c></c>
+                    <c>RS:1101:9</c>
+                    <c>IRRDB Prefix not found in AS-SET or aut-num</c>
+                    <c>Prefix was not found in the peer's as-set</c>
+                    <c>RS:1101:10</c>
+                    <c>Origin AS not in peer AS-SET</c>
+                    <c></c>
+                    <c>RS:1101:11</c>
+                    <c>Prefix not found in origin AS</c>
+                    <c></c>
+                    <c>RS:1101:12</c>
+                    <c>Prefix is RPKI UNKNOWN</c>
+                    <c></c>
+                    <c>RS:1101:13</c>
+                    <c>Prefix is RPKI INVALID</c>
+                    <c></c>
+                    <c>RS:1101:14</c>
+                    <c>Transit-free ASN in AS-Path</c>
+                    <c></c>
+                    <c>RS:1101:15</c>
+                    <c>Too many BGP communities set on prefix</c>
+                    <c></c>
+                </texttable>
+                </section>
+                <section title="Routes Filtered at the outbound direction">
+                <texttable anchor="table_filtered-on-export" title="Route was filtered on export RS:1102:*" style="all">
+                    <ttcol align="center" width="20%">Range</ttcol>
+                    <ttcol align="center" width="40%">Description</ttcol>
+                    <ttcol align="center" width="40%">Notes</ttcol>
+                    <c>RS:1102:1</c>
+                    <c>Advertising peer declines prefix</c>
+                    <c>Advertising peer does not want you to receive prefix</c>
+                    <c>RS:1102:2</c>
+                    <c>You declined prefix from advertising peer</c>
+                    <c>You do not want to receive prefix from advertising peer</c>
+                    <c>RS:1102:3</c>
+                    <c>Maximum number of BGP communities exceeded</c>
+                    <c></c>
+                </texttable>
+                </section>
+            </section>
+            <!-- </section> -->
+
+
+            <section title="Unassigned and IXP-Specific Reserved Communities">
+                <t>
+                    The following community ranges are reserved for operator- and IXP-specific use and are therefore not
+                    defined by this document:
+                    <ul>
+                        <li>Unassigned: RS:1200-1899:*</li>
+                        <li>IXP-Specific: RS:1900-1999:*</li>
+                    </ul>
+                    These communities are intended for internal use by route server operators, IXPs, or participating
+                    networks. Their semantics, if any, are to be defined by the relevant IXP or operator and are outside
+                    the scope of this document.
+                    <br/>
+                    Within these ranges, operators and IXPs MAY define and use communities for informational or
+                    policy-signalling purposes. Such communities:
+                    <ul>
+                        <li>MUST NOT be assumed to have any common or standardized meaning across different IXPs or
+                            deployments;
+                        </li>
+                        <li>SHOULD NOT be relied upon by third parties that do not have an explicit agreement or
+                            documentation from the defining operator or IXP.
+                        </li>
+                    </ul>
+                    This document does not specify, standardize, or register any individual values within these ranges.
+                    They are provided solely as free-to-use informational community spaces for local policy and
+                    operational practices.
+                </t>
+            </section>
+            <section title="Priorities">
+                <t>
+                    The priority value is an integer that determines the evaluation order in the route server
+                    configuration, where 0 represents the highest priority. For example, a NO-EXPORT community
+                    (RS:0:PEERAS) has priority 0. If an export community (RS:1:PEERAS) with priority 1 is also present,
+                    the NO-EXPORT community MUST be evaluated before the export community.
+                </t>
+            </section>
+        </section>
+        <section title="Security Considerations">
             <t>
-				For operational reasons, and to signal key functions to the IXP Route Servers, the range 0–999 of the second octet is reserved. The following tables provide a more detailed description of how this range is structured and how the individual values are intended to be used in practice.
-            </t>
-            <t>
-				Operational BGP Large Communities MUST be removed by the IXP operator before the associated prefixes are advertised to IXP members or other BGP peers.
-            </t>
-                <texttable anchor="table_direct" title="Direct filtering RS:0-99:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-		    <ttcol align="center">Priority</ttcol>
-                    <c>RS:0:PEERAS</c><c>Do not advertise to PEERAS</c><c></c><c>yes</c><c>0</c>
-		    <c>RS:1:PEERAS</c><c>Advertise to PEERAS</c><c>Only useful in combination with RS:0:0</c><c>yes</c><c>1</c>
-		    <c>RS:2:ms</c><c>Do not announce to peers higher than ms</c><c>ms = Latency of peer in ms</c><c>yes</c><c>2</c>
-                </texttable>
-                <texttable anchor="table_prepend" title="AS Path prepending RS:100-199:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-                    <c>RS:101:PEERAS</c><c>Prepend to PEERAS once</c><c></c><c>yes</c><c>3</c>
-		    <c>RS:102:PEERAS</c><c>Prepend to PEERAS twice</c><c></c><c>yes</c><c>3</c>
-		    <c>RS:103:PEERAS</c><c>Prepend to PEERAS three times</c><c></c><c>yes</c><c>3</c>
-		    <c>RS:111:ms</c><c>Prepend once to peers higher than ms</c><c></c><c>yes</c><c>3</c>
-                    <c>RS:112:ms</c><c>Prepend twice to peers higher than ms</c><c></c><c>yes</c><c>3</c>
-                    <c>RS:113:ms</c><c>Prepend three to peers higher than ms</c><c></c><c>yes</c><c>3</c>
-                </texttable>
-                <texttable anchor="table_unassigned_1" title="Unassigned RS:200-665:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-                    <c></c><c></c><c></c><c></c><c></c>
-                </texttable>
-
-                <texttable anchor="table_rtbh" title="BLACKHOLE Communities RS:666:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-		    <c>RS:666:0</c><c>BLACKHOLE Community</c><c>Community to signal Remote Triggered Blackholing</c><c>yes</c><c>3</c>
-                    <c></c><c></c><c></c><c></c><c></c>
-                </texttable>
-
-                <texttable anchor="table_unassigned_2" title="Unassigned RS:667-899:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-                    <c></c><c></c><c></c><c></c><c></c>
-                </texttable>
-                <texttable anchor="table_ixp_specific" title="IXP Specific RS:900-999:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <ttcol align="center">Priority</ttcol>
-                    <c></c><c></c><c></c><c></c><c></c>
-                </texttable>
-		</section>
-                <section title="Informational Large BGP Communities">
-            	<t>
-					For informational purposes, and to signal key functions to the IXP Route Servers, the range 1000–1999 of the second octet is reserved. The following tables provide a more detailed description of how this range is structured and how the individual values are intended to be used in practice.
-            	</t>
-            <t>
-				Informational BGP Large Communities MAY be removed by the IXP operator before the associated prefixes are advertised to IXP members or other BGP peers. This specification also provides detailed, per-community recommendations for their use, as described in the tables below.
-            </t>
-               <texttable anchor="table_informationaltags" title="Informational tags RS:1000-1099:*" style="all">
-                    <ttcol align="center" width="20%">Range</ttcol>
-                    <ttcol align="center">Description</ttcol>
-                    <ttcol align="center">Notes</ttcol>
-                    <ttcol align="center">Strip on export</ttcol>
-                    <c>RS:1000:1</c><c>RPKI VALID</c><c>Prefix is RPKI VALID</c><c>yes</c>
-                    <c>RS:1000:2</c><c>RPKI UNKNOWN</c><c>Prefix is RPKI UNKNOWN</c><c>yes</c>
-                    <c>RS:1000:3</c><c>RPKI NOT CHECKED</c><c>Prefix was not RPKI checked</c><c>yes</c>
-                    <c>RS:1000:4</c><c>RPKI INVALID No reason specified</c><c>Prefix is RPKI invalid, but no reason was given</c><c>yes</c>
-                    <c>RS:1000:5</c><c>RPKI INVALID Origin AS is invalid</c><c>Prefix is RPKI invalid because the origin AS is invalid</c><c>yes</c>
-                    <c>RS:1000:6</c><c>RPKI INVALID Max-length is invalid</c><c>Prefix is RPKI invalid because the Max-length is invalid</c><c>yes</c>
-                    <c>RS:1001:1</c><c>IRRDB VALID</c><c>Prefix exists in IRRDB</c><c>yes</c>
-                    <c>RS:1001:2</c><c>IRRDB NOT CHECKED</c><c>Prefix was not checked in IRRDB</c><c>yes</c>
-                    <c>RS:1001:3</c><c>MORE SPECIFIC THAN IRRDB</c><c>Prefix does not exist in IRRDB, but a less specific prefix valid entry does exists</c><c>yes</c>
-                    <c>RS:1001:4</c><c>IRRDB Prefix not found in AS-SET or aut-num</c><c>Prefix was not found in the peer's as-set</c><c>yes</c>
-                    <c>RS:1001:5</c><c>IRRDB INVALID ORIGIN AS</c><c>Origin AS not in peer AS-SET</c><c>yes</c>
-                    <c>RS:1001:6</c><c>IRRDB INVALID PREFIX FOR ORIGIN AS</c><c>Prefix not found in origin AS</c><c>yes</c>
-                    <c>RS:1002:1-*</c><c>TRACER (RS #)</c><c>IXP assigned ID for route server instance</c><c>no</c>
-                    <c>RS:1003:ms</c><c>Measured RTT for advertising peer</c><c>IXP measured round trip time for peer in ms</c><c>yes</c>
-                    <c>RS:1004:$peerAS</c><c>Incoming Peer AS</c><c>Use Autonomous System Number of the incoming member for that route</c><c>yes</c>
-                    <c>RS:1005:1</c><c>AS Object, Route Object and Organization NOT from the same region</c><c>Meant as a transitioning mechanism until full RPKI deployment</c><c>yes</c>
-                    <c>RS:1005:2</c><c>AS Object, Route Object and Organization from within the same region</c><c></c><c>yes</c>
-                    <c>RS:1005:3</c><c>AS Object, Route Object and Organization from within the same region Not checked</c><c></c><c>yes</c>
-									</texttable>
-									<texttable anchor="table_filtered-on-import" title="Informational RS:1000-1999:*" style="all">
-										<ttcol align="center" width="20%">Range</ttcol>
-										<ttcol align="center">Description</ttcol>
-										<ttcol align="center">Notes</ttcol>
-										<ttcol align="center">Strip on export</ttcol>
-										<c>RS:1101:1</c><c>Prefix length too long</c><c></c><c></c>
-										<c>RS:1101:2</c><c>Prefix length too short</c><c></c><c></c>
-										<c>RS:1101:3</c><c>Bogon Prefix</c><c></c><c></c>
-										<c>RS:1101:4</c><c>Bogon AS</c><c></c><c></c>
-										<c>RS:1101:5</c><c>AS path too long</c><c></c><c></c>
-										<c>RS:1101:6</c><c>AS path too short</c><c></c><c></c>
-										<c>RS:1101:7</c><c>as-path.first != peeras</c><c></c><c></c>
-										<c>RS:1101:8</c><c>next hop IP != peer IP</c><c></c><c></c>
-										<c>RS:1101:9</c><c>IRRDB Prefix not found in AS-SET or aut-num</c><c>Prefix was not found in the peer's as-set</c><c></c>
-										<c>RS:1101:10</c><c>Origin AS not in peer AS-SET</c><c></c><c></c>
-										<c>RS:1101:11</c><c>Prefix not found in origin AS</c><c></c><c></c>
-										<c>RS:1101:12</c><c>Prefix is RPKI UNKNOWN</c><c></c><c></c>
-										<c>RS:1101:13</c><c>Prefix is RPKI INVALID</c><c></c><c></c>
-										<c>RS:1101:14</c><c>Transit-free ASN in AS-Path</c><c></c><c></c>
-										<c>RS:1101:15</c><c>Too many BGP communities set on prefix</c><c></c><c></c>
-									</texttable>
-									<texttable anchor="table_filtered-on-export" title="Route was filtered on export RS:1102:*" style="all">
-										<ttcol align="center" width="20%">Range</ttcol>
-										<ttcol align="center">Description</ttcol>
-										<ttcol align="center">Notes</ttcol>
-										<ttcol align="center">Strip on export</ttcol>
-										<c>RS:1102:1</c><c>Advertising peer declines prefix</c><c>Advertising peer does not want you to receive prefix</c><c></c>
-										<c>RS:1102:2</c><c>You declined prefix from advertising peer</c><c>You do not want to receive prefix from advertising peer</c><c></c>
-										<c>RS:1102:3</c><c>Maximum number of BGP communities exceeded</c><c></c><c></c>
-									</texttable>
-								</section>
-							</section>
-
-
-		<section title="Unassigned and IXP-Specific Reserved Communities">
-			<t>
-				The following community ranges are reserved for operator- and IXP-specific use and are therefore not defined by this document:
-				<ul>
-					<li>Unassigned: RS:1200-1899:*</li>
-					<li>IXP-Specific: RS:1900-1999:*</li>
-				</ul>
-				These communities are intended for internal use by route server operators, IXPs, or participating networks. Their semantics, if any, are to be defined by the relevant IXP or operator and are outside the scope of this document.
-				<br/>
-				Within these ranges, operators and IXPs MAY define and use communities for informational or policy-signalling purposes. Such communities:
-				<ul>
-					<li>MUST NOT be assumed to have any common or standardized meaning across different IXPs or deployments;</li>
-					<li>SHOULD NOT be relied upon by third parties that do not have an explicit agreement or documentation from the defining operator or IXP.</li>
-				</ul>
-				This document does not specify, standardize, or register any individual values within these ranges. They are provided solely as free-to-use informational community spaces for local policy and operational practices.
-		    </t>
-       </section>
-		   <section title="Priorities">
-		   <t>
-			   The priority value is an integer that determines the evaluation order in the route server configuration, where 0 represents the highest priority. For example, a NO-EXPORT community (RS:0:PEERAS) has priority 0. If an export community (RS:1:PEERAS) with priority 1 is also present, the NO-EXPORT community MUST be evaluated before the export community.
-           </t>
-        </section>	
-       <section title="Security Considerations">
-           <t>
-				Operators should note the recommendations in Section 11 of BGP Operations and Security <xref target="RFC7454"/> and handle BGP Large Communities with their ASN in the Global Administrator field in a similar manner.
+                Operators should note the recommendations in Section 11 of BGP Operations and Security
+                <xref target="RFC7454"/>
+                and handle BGP Large Communities with their ASN in the Global Administrator field in a similar manner.
             </t>
         </section>
-		
+
         <section title="IANA Considerations">
             <t>
+                This document does not require any IANA actions.
             </t>
         </section>
 
         <section title="Acknowledgments">
             <t>
-				The authors would like to thank (in random order) Stefan Plug (Strato), Christoph Dietzel (DE-CIX), Colby Barth (Juniper Networks), Bryton Herdes (Cloudflare), Bryce Walters (Cloudflare), and Bijal Sanghani (EURO-IX) for their support, insightful reviews, and valuable comments.
+                The authors would like to thank (in random order) Stefan Plug (Strato), Christoph Dietzel (DE-CIX),
+                Colby Barth (Juniper Networks), Bryton Herdes (Cloudflare), Bryce Walters (Cloudflare), and Bijal
+                Sanghani (EURO-IX) for their support, insightful reviews, and valuable comments.
             </t>
         </section>
-
-            <section title="Appendix: Implementation Guidance">
-            <t>
-            </t>
-        </section>
-
+        <!--
+                    <section title="Appendix: Implementation Guidance">
+                    <t>
+                    </t>
+                </section>
+        -->
     </middle>
     <back>
         <references title="Normative References">
@@ -293,15 +515,15 @@
             <?rfc include="reference.RFC.8092"?>
             <?rfc include="reference.RFC.7948"?>
             <?rfc include="reference.RFC.7947"?>
-	    <?rfc include="reference.RFC.7454"?>
+            <?rfc include="reference.RFC.7454"?>
         </references>
         <references title="Informative References">
             <?rfc include="reference.RFC.8195"?>
             <reference anchor="EURO-IX" target="https://www.euro-ix.net/en/forixps/large-bgp-communities/">
                 <front>
                     <title>Large BGP Communities</title>
-			<author fullname="EURO-IX">
-                        	<organization>EURO-IX</organization>
+                    <author fullname="EURO-IX">
+                        <organization>EURO-IX</organization>
                     </author>
                     <date month="April" year="2018"/>
                 </front>
