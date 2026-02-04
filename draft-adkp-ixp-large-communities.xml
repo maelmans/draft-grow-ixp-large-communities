@@ -108,11 +108,13 @@
                 goal is to provide guidance on how to encode and interpret policy signals in a consistent manner within
                 the context of Internet Exchange Point deployments.
                 <br/>
+                <br/>
                 Building on the general framework for BGP Large Community usage described in<xref target="RFC8195"/>,
                 this document refines and extends those recommendations for the specific case of IXPs and their Route
                 Server infrastructures. It defines a set of Large Community conventions intended to facilitate common
                 operational practices, simplify policy coordination between IXP operators and participants, and promote
                 interoperable implementations across different networks and geographic regions.
+                <br/>
                 <br/>
                 The initial version of this specification was published on the Euro‑IX website
                 <xref target="EURO-IX"/>
@@ -132,6 +134,7 @@
                     diversification of participants introduces additional operational and policy considerations, for
                     example, in routing policy expression, traffic engineering, and incident response.
                     <br/>
+                    <br/>
                     As networks interconnect at multiple IXPs and across different geographic regions, the lack of
                     consistent policy signaling can lead to misinterpretation of routing intentions, operational
                     complexity, and sub‑optimal routing behavior. To mitigate these issues and to ensure predictable
@@ -148,6 +151,7 @@
                 IXP operators and participants to simplify configuration, reduce ambiguity, and promote consistent
                 behavior across IXPs and deployments.
                 <br/>
+                <br/>
                 We classify the BGP Large communities in two main categories: the Operational communities and the
                 Informational ones. The later ones are classified further into two sub-categories: IRR_RPKI
                 Informational communities and Filtered Informational communities.
@@ -157,8 +161,8 @@
                     For operational reasons, and to signal key functions to the IXP Route Servers, the range 0–999 of
                     the second octet is reserved. The following tables provide a more detailed description of how this
                     range is structured and how the individual values are intended to be used in practice.
-                </t>
-                <t>
+                <br/>
+                <br/>
                     Operational BGP Large Communities MUST be removed by the IXP operator before the associated prefixes
                     are advertised to IXP members or other BGP peers.
                 </t>
@@ -454,6 +458,7 @@
                     These communities are intended for internal use by route server operators, IXPs, or participating
                     networks. Their semantics, if any, are to be defined by the relevant IXP or operator and are outside
                     the scope of this document.
+                    <br/>
                     <br/>
                     Within these ranges, operators and IXPs MAY define and use communities for informational or
                     policy-signalling purposes. Such communities:

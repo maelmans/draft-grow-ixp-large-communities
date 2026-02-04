@@ -1228,11 +1228,11 @@ li > p:last-of-type:only-child {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">BGP Large Communities at IXP Route Serve</td>
-<td class="right">January 2026</td>
+<td class="right">February 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Aelmans, et al.</td>
-<td class="center">Expires 3 August 2026</td>
+<td class="center">Expires 8 August 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1248,12 +1248,12 @@ li > p:last-of-type:only-child {
 <a href="https://www.rfc-editor.org/rfc/rfc7947" class="eref">7947</a>, <a href="https://www.rfc-editor.org/rfc/rfc7948" class="eref">7948</a>, <a href="https://www.rfc-editor.org/rfc/rfc8195" class="eref">8195</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-01-30" class="published">30 January 2026</time>
+<time datetime="2026-02-04" class="published">4 February 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-08-03">3 August 2026</time></dd>
+<dd class="expires"><time datetime="2026-08-08">8 August 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1314,7 +1314,7 @@ li > p:last-of-type:only-child {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1428,12 +1428,14 @@ li > p:last-of-type:only-child {
                 goal is to provide guidance on how to encode and interpret policy signals in a consistent manner within
                 the context of Internet Exchange Point deployments.
                 <br>
+        <br>
                 Building on the general framework for BGP Large Community usage described in<span>[<a href="#RFC8195" class="cite xref">RFC8195</a>]</span>,
                 this document refines and extends those recommendations for the specific case of IXPs and their Route
                 Server infrastructures. It defines a set of Large Community conventions intended to facilitate common
                 operational practices, simplify policy coordination between IXP operators and participants, and promote
                 interoperable implementations across different networks and geographic regions.
                 <br>
+        <br>
                 The initial version of this specification was published on the Euro‑IX website
                 <span>[<a href="#EURO-IX" class="cite xref">EURO-IX</a>]</span>
                 and has been further refined based on operational feedback from IXP operators and members. Under the
@@ -1454,6 +1456,7 @@ li > p:last-of-type:only-child {
                     diversification of participants introduces additional operational and policy considerations, for
                     example, in routing policy expression, traffic engineering, and incident response.
                     <br>
+          <br>
                     As networks interconnect at multiple IXPs and across different geographic regions, the lack of
                     consistent policy signaling can lead to misinterpretation of routing intentions, operational
                     complexity, and sub‑optimal routing behavior. To mitigate these issues and to ensure predictable
@@ -1472,6 +1475,7 @@ li > p:last-of-type:only-child {
                 IXP operators and participants to simplify configuration, reduce ambiguity, and promote consistent
                 behavior across IXPs and deployments.
                 <br>
+        <br>
                 We classify the BGP Large communities in two main categories: the Operational communities and the
                 Informational ones. The later ones are classified further into two sub-categories: IRR_RPKI
                 Informational communities and Filtered Informational communities.<a href="#section-2-1" class="pilcrow">¶</a></p>
@@ -1482,10 +1486,11 @@ li > p:last-of-type:only-child {
 <p id="section-2.1-1">
                     For operational reasons, and to signal key functions to the IXP Route Servers, the range 0–999 of
                     the second octet is reserved. The following tables provide a more detailed description of how this
-                    range is structured and how the individual values are intended to be used in practice.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
-<p id="section-2.1-2">
+                    range is structured and how the individual values are intended to be used in practice.
+                <br>
+          <br>
                     Operational BGP Large Communities MUST be removed by the IXP operator before the associated prefixes
-                    are advertised to IXP members or other BGP peers.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+                    are advertised to IXP members or other BGP peers.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <section id="section-2.1.1">
           <h4 id="name-direct-filtering-operationa">
 <a href="#section-2.1.1" class="section-number selfRef">2.1.1. </a><a href="#name-direct-filtering-operationa" class="section-name selfRef">Direct Filtering Operational Communities</a>
@@ -1939,6 +1944,7 @@ li > p:last-of-type:only-child {
                     networks. Their semantics, if any, are to be defined by the relevant IXP or operator and are outside
                     the scope of this document.
                     <br>
+          <br>
                     Within these ranges, operators and IXPs MAY define and use communities for informational or
                     policy-signalling purposes. Such communities:<a href="#section-2.4-3" class="pilcrow">¶</a></p>
 <ul class="normal">
