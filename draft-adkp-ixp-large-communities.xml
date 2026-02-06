@@ -153,7 +153,7 @@
                 <br/>
                 <br/>
                 We classify the BGP Large communities in two main categories: the Operational communities and the
-                Informational ones. The later ones are classified further into two sub-categories: IRR_RPKI
+                Informational ones. The latter ones are classified further into two sub-categories: IRR_RPKI
                 Informational communities and Filtered Informational communities.
             </t>
             <section title="Operational Large BGP Communities">
