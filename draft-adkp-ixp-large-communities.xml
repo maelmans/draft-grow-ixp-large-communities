@@ -367,10 +367,10 @@
             </section>
             <section title="Informational Filtered Large BGP Communities">
                 <t>
-                    Prefixes which carry these communities, are not expected to be advertised to anyone by the IXP's Route
+                    Prefixes which carry these communities are not expected to be advertised to anyone by the IXP's Route
                     Servers as a result of filtering actions.
                     However, it may still be useful to tag an incoming filtered route in order to project the
-                    reasoning to a Looking Glass. For IXP network engineers, is useful to have those BGP community tags
+                    reasoning to a Looking Glass. For IXP network engineers, it is useful to have those BGP community tags
                     to be present for troubleshooting reasons as most of the BGP speakers can present to the user's CLI
                     the routes that have been filtered.
                 </t>
