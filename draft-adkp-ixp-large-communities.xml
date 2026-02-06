@@ -277,7 +277,7 @@
             <section title="Informational IRR_RPKI Large BGP Communities">
                 <t>
                     For informational purposes, the range 1000–1999 of the second octet is reserved. The following
-                    tables provide a more detailed description of how this range is structured and how the individual
+                    table provides a more detailed description of how this range is structured and how the individual
                     values are intended to be used in practice.
                 </t>
                 <t>
