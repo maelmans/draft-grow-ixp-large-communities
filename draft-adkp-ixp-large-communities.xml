@@ -153,7 +153,7 @@
                 <br/>
                 <br/>
                 We classify the BGP Large communities in two main categories: the Operational communities and the
-                Informational ones. The latter ones are classified further into two sub-categories: IRR_RPKI
+                Informational communities. The latter ones are classified further into two sub-categories: IRR_RPKI
                 Informational communities and Filtered Informational communities.
             </t>
             <section title="Operational Large BGP Communities">
@@ -174,7 +174,7 @@
                         <ttcol align="center">Strip on export</ttcol>
                         <ttcol align="center">Priority</ttcol>
                         <c>RS:0:PEERAS</c>
-                        <c>Do not advertise to PEERAS</c>
+                        <c>Do not advertise to PEERAS </c>
                         <c></c>
                         <c>yes</c>
                         <c>0</c>
@@ -182,10 +182,10 @@
                         <c>Advertise to PEERAS</c>
                         <c>Only useful in combination with RS:0:0</c>
                         <c>yes</c>
-                        <c>1</c>
+                        <c>1</c>        
                         <c>RS:2:ms</c>
-                        <c>Do not announce to peers higher than ms</c>
-                        <c>ms = Latency of peer in ms</c>
+                        <c>Do not announce to peers higher than ms of RTT</c>
+                        <c>ms = Latency of peer in miliseconds</c>
                         <c>yes</c>
                         <c>2</c>
                     </texttable>
@@ -374,7 +374,7 @@
                     to be present for troubleshooting reasons as most of the BGP speakers can present to the user's CLI
                     the routes that have been filtered.
                 </t>
-                <section title="Routes filtered on Inbound direction">
+                <section title="Routes filtered on inbound direction">
                 <texttable anchor="table_filtered-on-import" title="Informational Filtered tags RS:1000-1999:*"
                            style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
@@ -427,7 +427,7 @@
                     <c></c>
                 </texttable>
                 </section>
-                <section title="Routes Filtered at the outbound direction">
+                <section title="Routes Filtered on outbound direction">
                 <texttable anchor="table_filtered-on-export" title="Route was filtered on export RS:1102:*" style="all">
                     <ttcol align="center" width="20%">Range</ttcol>
                     <ttcol align="center" width="40%">Description</ttcol>
